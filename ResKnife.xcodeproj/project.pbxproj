@@ -1658,7 +1658,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = E13F7F0508F0411100E2A5CB /* Build configuration list for PBXProject "ResKnife" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2467,8 +2467,9 @@
 				INFOPLIST_FILE = "System7SoundPlayer/System7SoundPlayer-Info.plist";
 				MACH_O_TYPE = mh_execute;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "org.derailer.ResKnife.$(TARGET_NAME:rfc1034identifier)";
+				VALID_ARCHS = i386;
 				WRAPPER_EXTENSION = xpc;
 			};
 			name = Debug;
@@ -2497,6 +2498,7 @@
 				MACH_O_TYPE = mh_execute;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "org.derailer.ResKnife.$(TARGET_NAME:rfc1034identifier)";
+				VALID_ARCHS = i386;
 				WRAPPER_EXTENSION = xpc;
 			};
 			name = Release;
@@ -3024,11 +3026,11 @@
 		E13F7F0608F0411100E2A5CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				CODE_SIGN_IDENTITY = "Developer ID Application: Nate Weaver";
 				GCC_VERSION = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 			};
@@ -3037,7 +3039,6 @@
 		E13F7F0708F0411100E2A5CB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				CODE_SIGN_IDENTITY = "Developer ID Application: Nate Weaver";
 				GCC_VERSION = "";
