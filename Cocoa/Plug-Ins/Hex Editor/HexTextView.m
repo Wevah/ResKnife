@@ -127,7 +127,8 @@
 
 /* Dragging routines */
 
-- (NSDragOperation)draggingSourceOperationMaskForLocal:(BOOL)isLocal
+//- (NSDragOperation)draggingSourceOperationMaskForLocal:(BOOL)isLocal
+- (NSDragOperation)draggingSession:(NSDraggingSession *)session sourceOperationMaskForDraggingContext:(NSDraggingContext)context
 {
 	return NSDragOperationNone;
 /*	if(isLocal) return NSDragOperationEvery;
@@ -137,12 +138,12 @@
 
 static NSRange draggedRange;
 
-- (void)draggedImage:(NSImage *)image beganAt:(NSPoint)point
+- (void)draggingSession:(NSDraggingSession *)session willBeginAtPoint:(NSPoint)screenPoint
 {
 	draggedRange = [self rangeForUserTextChange];
 }
 
-- (void)draggedImage:(NSImage *)image endedAt:(NSPoint)point operation:(NSDragOperation)operation
+- (void)draggingSession:(NSDraggingSession *)session endedAtPoint:(NSPoint)screenPoint operation:(NSDragOperation)operation
 {
 	if(operation == NSDragOperationMove)
 	{

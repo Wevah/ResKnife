@@ -64,8 +64,9 @@ extern NSString *RKResourcePboardType;
 @updated		2003-11-08 NGS:	Now handles opening user-selected forks.
 */
 
--(BOOL)readFromFile:(NSString *)fileName ofType:(NSString *)fileKind
+- (BOOL)readFromURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError **)outError
 {
+	NSString *fileName = [url path];
 	BOOL			succeeded = NO;
 	OSStatus		error = noErr;
 	FSRef			*fileRef = (FSRef *) NewPtrClear(sizeof(FSRef));
@@ -321,8 +322,9 @@ extern NSString *RKResourcePboardType;
 @pending	Doesn't write correct type/creator info - always ResKnife's!
 */
 
-- (BOOL)writeToFile:(NSString *)fileName ofType:(NSString *)type
+- (BOOL)writeToURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError **)outError
 {
+	NSString *fileName = [url path];
 	OSStatus error = noErr;
 	ResFileRefNum fileRefNum = 0;
 	FSRef *parentRef	= (FSRef *) NewPtrClear(sizeof(FSRef));

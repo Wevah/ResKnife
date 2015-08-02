@@ -175,8 +175,9 @@
 /*!
 @method		draggingSourceOperationMaskForLocal:
 */
-- (NSDragOperation)draggingSourceOperationMaskForLocal:(BOOL)local
+- (NSDragOperation)draggingSession:(NSDraggingSession *)session sourceOperationMaskForDraggingContext:(NSDraggingContext)context
 {
+	BOOL local = context == NSDraggingContextWithinApplication;
     if(local) return NSDragOperationEvery;
     else return NSDragOperationCopy;
 }
