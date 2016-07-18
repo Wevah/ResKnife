@@ -10,13 +10,13 @@
 		0EBA8666122CF49800FEC1AC /* NGSCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = 0EBA8664122CF49800FEC1AC /* NGSCategories.h */; };
 		0EBA8667122CF49800FEC1AC /* NGSCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA8665122CF49800FEC1AC /* NGSCategories.m */; };
 		0EF71540122BD0D0005DF94E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0EF7153F122BD0D0005DF94E /* Localizable.strings */; };
-		3DB9D6E712307F6300DDA647 /* Bitmap Editor.plugin in Copy Plugins */ = {isa = PBXBuildFile; fileRef = E18BF69D069FEA1800F076B8 /* Bitmap Editor.plugin */; };
+		3DB9D6E712307F6300DDA647 /* Bitmap Editor.plugin in Copy Plugins */ = {isa = PBXBuildFile; fileRef = E18BF69D069FEA1800F076B8 /* Bitmap Editor.plugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B22100CD15D3F944009FDEE1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0EF7153F122BD0D0005DF94E /* Localizable.strings */; };
 		B229EECB15A4B8720032C12C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B5884B0156D40B01000001 /* Cocoa.framework */; };
 		B229EED515A4B8720032C12C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B229EED315A4B8720032C12C /* InfoPlist.strings */; };
 		B229EEDB15A4B9420032C12C /* PNGWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B229EEC115A4B7250032C12C /* PNGWindowController.m */; };
 		B229EEDC15A4B9420032C12C /* PNGWindowController.xib in Sources */ = {isa = PBXBuildFile; fileRef = B229EEC215A4B7250032C12C /* PNGWindowController.xib */; };
-		B229EEDD15A4BA900032C12C /* PNG Editor.plugin in Copy Plugins */ = {isa = PBXBuildFile; fileRef = B229EECA15A4B8720032C12C /* PNG Editor.plugin */; };
+		B229EEDD15A4BA900032C12C /* PNG Editor.plugin in Copy Plugins */ = {isa = PBXBuildFile; fileRef = B229EECA15A4B8720032C12C /* PNG Editor.plugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B229EEDE15A4BABD0032C12C /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9ECCE027F474A01A8010C /* Notifications.m */; };
 		B229EEE115A4BB2E0032C12C /* PNGWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = B229EEC015A4B7250032C12C /* PNGWindowController.h */; };
 		B229EEF415A4FB6F0032C12C /* AboutPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = B229EEE815A4FB6F0032C12C /* AboutPanel.xib */; };
@@ -28,13 +28,13 @@
 		B234337F16AB59D0007134B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B5884D0156D40B01000001 /* Foundation.framework */; };
 		B234338516AB59D0007134B9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B234338316AB59D0007134B9 /* InfoPlist.strings */; };
 		B234338816AB59D0007134B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B234338716AB59D0007134B9 /* main.m */; };
-		B234338E16AB5D5D007134B9 /* org.derailer.ResKnife.System7SoundPlayer.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = B234337E16AB59D0007134B9 /* org.derailer.ResKnife.System7SoundPlayer.xpc */; };
+		B234338E16AB5D5D007134B9 /* org.derailer.ResKnife.System7SoundPlayer.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = B234337E16AB59D0007134B9 /* org.derailer.ResKnife.System7SoundPlayer.xpc */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B234339916AB6143007134B9 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B5884A0156D40B01000001 /* Carbon.framework */; };
 		B23433DB16AB69AE007134B9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B5884B0156D40B01000001 /* Cocoa.framework */; };
 		B24925E215A6776600C22060 /* PictWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B24925E015A6776600C22060 /* PictWindow.xib */; };
 		B24925E615A6778C00C22060 /* ICONWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B24925E415A6778C00C22060 /* ICONWindow.xib */; };
 		B24FA09915D303A800622683 /* HexFiend.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B25C779815D2B0C500C005DE /* HexFiend.framework */; };
-		B24FA09B15D303CD00622683 /* HexFiend.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B25C779815D2B0C500C005DE /* HexFiend.framework */; };
+		B24FA09B15D303CD00622683 /* HexFiend.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B25C779815D2B0C500C005DE /* HexFiend.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B24FA09C15D3041800622683 /* HexFiend.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B25C779815D2B0C500C005DE /* HexFiend.framework */; };
 		B271D08015B6CFC70039A282 /* EditHexTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = B271D07F15B6CFC70039A282 /* EditHexTemplate.pdf */; };
 		B27A65D015A677F00029141B /* TemplateWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B27A65CE15A677F00029141B /* TemplateWindow.xib */; };
@@ -42,7 +42,7 @@
 		B27A65D715A678260029141B /* HexWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B27A65D415A678260029141B /* HexWindow.xib */; };
 		B2B2C40815A9464400D6F61C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B5884B0156D40B01000001 /* Cocoa.framework */; };
 		B2B2C40E15A9464400D6F61C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B2B2C40C15A9464400D6F61C /* InfoPlist.strings */; };
-		B2B2C41515A9468300D6F61C /* Pattern Editor.plugin in Copy Plugins */ = {isa = PBXBuildFile; fileRef = B2B2C40715A9464400D6F61C /* Pattern Editor.plugin */; };
+		B2B2C41515A9468300D6F61C /* Pattern Editor.plugin in Copy Plugins */ = {isa = PBXBuildFile; fileRef = B2B2C40715A9464400D6F61C /* Pattern Editor.plugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B2B2C41615A946FB00D6F61C /* PatternWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B2C3FE15A9453300D6F61C /* PatternWindowController.m */; };
 		B2B2C41715A9470500D6F61C /* PatternWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2B2C3FF15A9453300D6F61C /* PatternWindowController.xib */; };
 		B2B2C41815A9473C00D6F61C /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9ECCE027F474A01A8010C /* Notifications.m */; };
@@ -54,7 +54,7 @@
 		B2FCA79115A66ACF00696598 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B2FCA78F15A66ACF00696598 /* InfoPlist.strings */; };
 		B2FCA79715A66B2A00696598 /* PictWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FCA78015A669C800696598 /* PictWindowController.m */; };
 		B2FCA79815A66B2A00696598 /* SupportedTypes.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2FCA78115A669C800696598 /* SupportedTypes.plist */; };
-		B2FCA79C15A66B5500696598 /* PICT Editor.plugin in Copy Plugins */ = {isa = PBXBuildFile; fileRef = B2FCA78A15A66ACE00696598 /* PICT Editor.plugin */; };
+		B2FCA79C15A66B5500696598 /* PICT Editor.plugin in Copy Plugins */ = {isa = PBXBuildFile; fileRef = B2FCA78A15A66ACE00696598 /* PICT Editor.plugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B2FCA79D15A66B7200696598 /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9ECCE027F474A01A8010C /* Notifications.m */; };
 		B2FCA7A215A6704900696598 /* FontDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2FCA79E15A6704900696598 /* FontDocument.xib */; };
 		B2FCA7A315A6704900696598 /* FontWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2FCA7A015A6704900696598 /* FontWindow.xib */; };
@@ -75,7 +75,7 @@
 		E119388D0999296B00A3A6EA /* ElementHEXD.h in Headers */ = {isa = PBXBuildFile; fileRef = E119388B0999296B00A3A6EA /* ElementHEXD.h */; };
 		E119388E0999296B00A3A6EA /* ElementHEXD.m in Sources */ = {isa = PBXBuildFile; fileRef = E119388C0999296B00A3A6EA /* ElementHEXD.m */; };
 		E1193949099940FD00A3A6EA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1193947099940FD00A3A6EA /* InfoPlist.strings */; };
-		E13F837F08F13A4C00E2A5CB /* Font Editor.plugin in Copy Plugins */ = {isa = PBXBuildFile; fileRef = E18BF78B069FF23700F076B8 /* Font Editor.plugin */; };
+		E13F837F08F13A4C00E2A5CB /* Font Editor.plugin in Copy Plugins */ = {isa = PBXBuildFile; fileRef = E18BF78B069FF23700F076B8 /* Font Editor.plugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		E14AC2760996BF1700D293E5 /* ElementDLLG.h in Headers */ = {isa = PBXBuildFile; fileRef = E14AC2740996BF1700D293E5 /* ElementDLLG.h */; };
 		E14AC2770996BF1700D293E5 /* ElementDLLG.m in Sources */ = {isa = PBXBuildFile; fileRef = E14AC2750996BF1700D293E5 /* ElementDLLG.m */; };
 		E14AC453099702F400D293E5 /* ElementFBYT.h in Headers */ = {isa = PBXBuildFile; fileRef = E14AC451099702F300D293E5 /* ElementFBYT.h */; };
@@ -259,8 +259,8 @@
 		E1A984FE099C309400A70612 /* DisplayTMPL.png in Resources */ = {isa = PBXBuildFile; fileRef = E1A984FD099C309300A70612 /* DisplayTMPL.png */; };
 		E1D0DB520A109A4F0011739C /* ElementKEYB.h in Headers */ = {isa = PBXBuildFile; fileRef = E1D0DB4E0A109A4E0011739C /* ElementKEYB.h */; };
 		E1D0DB530A109A4F0011739C /* ElementKEYB.mm in Sources */ = {isa = PBXBuildFile; fileRef = E1D0DB4F0A109A4E0011739C /* ElementKEYB.mm */; };
-		E1EAB19A06A20F1A0041EE35 /* Hexadecimal Editor.plugin in Copy Plugins */ = {isa = PBXBuildFile; fileRef = E18BF5A6069FEA1400F076B8 /* Hexadecimal Editor.plugin */; };
-		E1F0B65B06AD62B1007D3469 /* Template Editor.plugin in Copy Plugins */ = {isa = PBXBuildFile; fileRef = E18BF6C8069FEA1900F076B8 /* Template Editor.plugin */; };
+		E1EAB19A06A20F1A0041EE35 /* Hexadecimal Editor.plugin in Copy Plugins */ = {isa = PBXBuildFile; fileRef = E18BF5A6069FEA1400F076B8 /* Hexadecimal Editor.plugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		E1F0B65B06AD62B1007D3469 /* Template Editor.plugin in Copy Plugins */ = {isa = PBXBuildFile; fileRef = E18BF6C8069FEA1900F076B8 /* Template Editor.plugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -1658,7 +1658,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0610;
 			};
 			buildConfigurationList = E13F7F0508F0411100E2A5CB /* Build configuration list for PBXProject "ResKnife" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -3026,8 +3026,9 @@
 		E13F7F0608F0411100E2A5CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application: Nate Weaver";
+				CODE_SIGN_IDENTITY = "";
 				GCC_VERSION = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
@@ -3039,10 +3040,12 @@
 		E13F7F0708F0411100E2A5CB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application: Nate Weaver";
+				CODE_SIGN_IDENTITY = "";
 				GCC_VERSION = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 			};
