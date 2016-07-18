@@ -135,7 +135,7 @@
 {
 #pragma unused(application)
 	// bug: check if application was an external editor (e.g. Iconographer) and update existing open file instead
-	[[NSDocumentController sharedDocumentController] openDocumentWithContentsOfURL:[NSURL fileURLWithPath:file] display:YES completionHandler:nil];
+	[[NSDocumentController sharedDocumentController] openDocumentWithContentsOfURL:[NSURL fileURLWithPath:file] display:YES completionHandler:^(NSDocument *document, BOOL displayDocument, NSError *error){}];
 	return YES;
 }
 

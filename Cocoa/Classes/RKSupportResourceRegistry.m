@@ -28,7 +28,7 @@
 	{
 //		NSLog(@"Examining %@", name);
 		if([[name pathExtension] isEqualToString:@"rsrc"])
-			[[NSDocumentController sharedDocumentController] openDocumentWithContentsOfURL:[NSURL fileURLWithPath:[path stringByAppendingPathComponent:name]] display:NO completionHandler:nil];
+			[[NSDocumentController sharedDocumentController] openDocumentWithContentsOfURL:[NSURL fileURLWithPath:[path stringByAppendingPathComponent:name]] display:NO completionHandler:^(NSDocument *document, BOOL displayDocument, NSError *error){}];
 	}
 }
 
