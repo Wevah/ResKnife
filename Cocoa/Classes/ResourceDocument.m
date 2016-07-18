@@ -578,7 +578,7 @@ extern NSString *RKResourcePboardType;
 		extension = [editorClass filenameExtensionForFileExport:resource];
 	
 	NSSavePanel *panel = [NSSavePanel savePanel];
-	NSString *filename = [resource name] ? [resource name] : NSLocalizedString(@"Untitled Resource",nil);
+	NSString *filename = [resource name].length != 0 ? [resource name] : NSLocalizedString(@"Untitled Resource",nil);
 	filename = [filename stringByAppendingPathExtension:extension];
 	[panel setNameFieldStringValue:filename];
 	//[panel beginSheetForDirectory:nil file:filename modalForWindow:mainWindow modalDelegate:self didEndSelector:@selector(exportPanelDidEnd:returnCode:contextInfo:) contextInfo:[exportData retain]];
@@ -979,7 +979,7 @@ static NSString *RKViewItemIdentifier		= @"com.nickshanks.resknife.toolbar.view"
 		// update: doug says window controllers automatically release themselves when their window is closed. All default plugs have a window controller as their principal class, but 3rd party ones might not
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resourceDataDidChange:) name:ResourceDataDidChangeNotification object:resource];
 		id plug = [(id <ResKnifePluginProtocol>)[editorClass alloc] initWithResource:resource];
-		if(plug) return plug;
+		if(plug) return [plug autorelease];
 	}
 	
 	// if no editor exists, or the editor is broken, open using template
@@ -1014,7 +1014,7 @@ static NSString *RKViewItemIdentifier		= @"com.nickshanks.resknife.toolbar.view"
 	{
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resourceDataDidChange:) name:ResourceDataDidChangeNotification object:resource];
 		id plug = [(id <ResKnifeTemplatePluginProtocol>)[editorClass alloc] initWithResources:resource, tmpl, nil];
-		if(plug) return plug;
+		if(plug) return [plug autorelease];
 	}
 	
 	// if no template exists, or template editor is broken, open as hex
@@ -1038,7 +1038,7 @@ static NSString *RKViewItemIdentifier		= @"com.nickshanks.resknife.toolbar.view"
 	// update: doug says window controllers automatically release themselves when their window is closed.
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resourceDataDidChange:) name:ResourceDataDidChangeNotification object:resource];
 	id <ResKnifePluginProtocol> plugController = [(id <ResKnifePluginProtocol>)[editorClass alloc] initWithResource:resource];
-	return plugController;
+	return [plugController autorelease];
 }
 
 

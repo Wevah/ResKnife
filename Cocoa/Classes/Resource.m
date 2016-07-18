@@ -182,7 +182,10 @@ NSString *RKResourcePboardType = @"RKResourcePboardType";
 
 - (void)setRepresentedFork:(NSString *)forkName
 {
-	representedFork = [forkName copy];
+	if (representedFork != forkName) {
+		[representedFork release];
+		representedFork = [forkName copy];
+	}
 }
 
 - (NSString *)name
