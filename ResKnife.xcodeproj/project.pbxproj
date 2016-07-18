@@ -1658,7 +1658,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0730;
 			};
 			buildConfigurationList = E13F7F0508F0411100E2A5CB /* Build configuration list for PBXProject "ResKnife" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2410,6 +2410,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.derailer.resknife.pngeditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = plugin;
 			};
@@ -2433,6 +2434,7 @@
 				INFOPLIST_FILE = "PNG Editor/PNG Editor-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_BUNDLE_IDENTIFIER = org.derailer.resknife.pngeditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = plugin;
 			};
@@ -2442,7 +2444,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -2468,6 +2469,7 @@
 				MACH_O_TYPE = mh_execute;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "${PRODUCT_NAME}";
 				PRODUCT_NAME = "org.derailer.ResKnife.$(TARGET_NAME:rfc1034identifier)";
 				VALID_ARCHS = i386;
 				WRAPPER_EXTENSION = xpc;
@@ -2478,7 +2480,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -2497,6 +2498,7 @@
 				INFOPLIST_FILE = "System7SoundPlayer/System7SoundPlayer-Info.plist";
 				MACH_O_TYPE = mh_execute;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_BUNDLE_IDENTIFIER = "${PRODUCT_NAME}";
 				PRODUCT_NAME = "org.derailer.ResKnife.$(TARGET_NAME:rfc1034identifier)";
 				VALID_ARCHS = i386;
 				WRAPPER_EXTENSION = xpc;
@@ -2527,6 +2529,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.derailer.resknife.patterneditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = plugin;
 			};
@@ -2549,6 +2552,7 @@
 				INFOPLIST_FILE = "Pattern Editor/Pattern Editor-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_BUNDLE_IDENTIFIER = org.derailer.resknife.patterneditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = plugin;
 			};
@@ -2578,6 +2582,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.derailer.resknife.picteditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = plugin;
 			};
@@ -2600,6 +2605,7 @@
 				INFOPLIST_FILE = "PICT Editor/PICT Editor-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_BUNDLE_IDENTIFIER = org.derailer.resknife.picteditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = plugin;
 			};
@@ -2626,6 +2632,7 @@
 					dynamic_lookup,
 				);
 				OTHER_REZFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nickshanks.resknife.hexadecimal;
 				PRODUCT_NAME = "Hexadecimal Editor";
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = (
@@ -2657,6 +2664,7 @@
 					dynamic_lookup,
 				);
 				OTHER_REZFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nickshanks.resknife.hexadecimal;
 				PRODUCT_NAME = "Hexadecimal Editor";
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = (
@@ -2682,6 +2690,7 @@
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nickshanks.resknife.templateeditor;
 				PRODUCT_NAME = "Template Editor";
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = (
@@ -2705,6 +2714,7 @@
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nickshanks.resknife.templateeditor;
 				PRODUCT_NAME = "Template Editor";
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = (
@@ -2735,6 +2745,7 @@
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Cocoa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nickshanks.resknife;
 				PRODUCT_NAME = ResKnife;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -2761,6 +2772,7 @@
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Cocoa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nickshanks.resknife;
 				PRODUCT_NAME = ResKnife;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -2832,6 +2844,7 @@
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ulikusterer.resknife.bitmap-editor";
 				PRODUCT_NAME = "Bitmap Editor";
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = (
@@ -2855,6 +2868,7 @@
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ulikusterer.resknife.bitmap-editor";
 				PRODUCT_NAME = "Bitmap Editor";
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = (
@@ -2891,6 +2905,7 @@
 					AppKit,
 				);
 				OTHER_REZFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nickshanks.resknife.fonteditor;
 				PRODUCT_NAME = "Font Editor";
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = "-Wmost";
@@ -2921,6 +2936,7 @@
 					AppKit,
 				);
 				OTHER_REZFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nickshanks.resknife.fonteditor;
 				PRODUCT_NAME = "Font Editor";
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = "-Wmost";
@@ -2942,6 +2958,7 @@
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "au.com.sutherland-studios.resknife.novatools";
 				PRODUCT_NAME = NovaTools;
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = (
@@ -2965,6 +2982,7 @@
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "au.com.sutherland-studios.resknife.novatools";
 				PRODUCT_NAME = NovaTools;
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = (
@@ -3029,6 +3047,7 @@
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				CODE_SIGN_IDENTITY = "";
+				ENABLE_TESTABILITY = YES;
 				GCC_VERSION = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
