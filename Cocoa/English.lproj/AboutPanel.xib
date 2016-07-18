@@ -26,10 +26,8 @@
                     <textField verticalHuggingPriority="750" id="40">
                         <rect key="frame" x="75" y="218" width="380" height="29"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="41">
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="ResKnife" id="41">
                             <font key="font" metaFont="system" size="24"/>
-                            <string key="title">ResKnife
-</string>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -92,6 +90,7 @@
                 <outlet property="delegate" destination="-2" id="53"/>
                 <outlet property="initialFirstResponder" destination="49" id="54"/>
             </connections>
+            <point key="canvasLocation" x="48" y="92"/>
         </window>
     </objects>
     <resources>
