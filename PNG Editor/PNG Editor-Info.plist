@@ -29,6 +29,7 @@
 	<key>RKEditedTypes</key>
 	<array>
 		<string>PNG </string>
+		<string>PNGI</string>
 	</array>
 </dict>
 </plist>
