@@ -44,7 +44,7 @@ extern NSString *RKResourcePboardType;
 - (void)dealloc
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	if(fork) DisposePtr((Ptr) fork);
+	free(fork);
 	[resources release];
 	[toolbarItems release];
 	[type release];
@@ -82,7 +82,7 @@ extern NSString *RKResourcePboardType;
 		// display second dialog to ask user to select a fork, pre-10.3 or if open command did not come via the open dialog
 		
 		// bug:	unimplemented - always tells app to try resource fork first
-		fork = (HFSUniStr255 *) NewPtrClear(sizeof(HFSUniStr255));
+		fork = (HFSUniStr255 *) malloc(sizeof(HFSUniStr255));
 		error = FSGetResourceForkName(fork);
 		if(error) return NO;
 	}
