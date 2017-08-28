@@ -86,7 +86,10 @@
 	NSMutableArray *forks = [NSMutableArray array];
 	
 	// check we have a file, not a folder
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 	OSErr error = FSGetCatalogInfo(fileRef, whichInfo, &catalogInfo, NULL, NULL, NULL);
+#pragma clang diagnostic pop
 	if(!error && !(catalogInfo.nodeFlags & kFSNodeIsDirectoryMask))
 	{
 		// iterate over file and populate forks array
@@ -95,8 +98,10 @@
 			HFSUniStr255 forkName;
 			SInt64 forkSize;
 			UInt64 forkPhysicalSize;	// used if opening selected fork fails to find empty forks
-			
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 			error = FSIterateForks(fileRef, &forkIterator, &forkName, &forkSize, &forkPhysicalSize);
+#pragma clang diagnostic pop
 			if(!error)
 			{
 				NSString *fName = [NSString stringWithCharacters:forkName.unicode length:forkName.length];

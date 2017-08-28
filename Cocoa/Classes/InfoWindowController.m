@@ -32,7 +32,11 @@ FSGetForkSizes(
 	}
 	
 	/* get nodeFlags and catalog info */
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 	result = FSGetCatalogInfo(ref, whichInfo, &catalogInfo, NULL, NULL,NULL);
+#pragma clang diagnostic pop
+
 	require_noerr(result, FSGetCatalogInfo);
 	
 	/* make sure FSRef was to a file */
@@ -118,7 +122,10 @@ FSGetCatalogInfo:
 		if([currentDocument fileURL])
 		{
 			FSRef fileRef;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 			OSStatus error = FSPathMakeRef((unsigned char *)[[[currentDocument fileURL] path] fileSystemRepresentation], &fileRef, nil);
+#pragma clang diagnostic pop
 			if(!error) FSGetForkSizes(&fileRef, &dataLogicalSize, &rsrcLogicalSize);
 		}
 

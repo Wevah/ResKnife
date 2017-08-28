@@ -5,8 +5,11 @@
 - (FSRef *)createFSRef
 {
 	// caller is responsible for disposing of the FSRef (method is a 'create' method)
-	FSRef *fsRef = (FSRef *) NewPtrClear(sizeof(FSRef));
+	FSRef *fsRef = (FSRef *) malloc(sizeof(FSRef));
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 	OSStatus error = FSPathMakeRef((unsigned char *)[self fileSystemRepresentation], fsRef, NULL);
+#pragma clang diagnostic pop
 	if(error == noErr)
 		return fsRef;
 	return NULL;
@@ -15,19 +18,23 @@
 - (FSSpec *)createFSSpec
 {
 	// caller is responsible for disposing of the FSSpec (method is a 'create' method)
-	FSRef *fsRef = (FSRef *) NewPtrClear(sizeof(FSRef));
-	FSSpec *fsSpec = (FSSpec *) NewPtrClear(sizeof(FSSpec));
-	OSStatus error = FSPathMakeRef((unsigned char *)[self fileSystemRepresentation], fsRef, NULL);
+	FSRef fsRef;
+	FSSpec *fsSpec = (FSSpec *) malloc(sizeof(FSSpec));
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+	OSStatus error = FSPathMakeRef((unsigned char *)[self fileSystemRepresentation], &fsRef, NULL);
+#pragma clang diagnostic pop
 	if(error == noErr)
 	{
-		error = FSGetCatalogInfo(fsRef, kFSCatInfoNone, NULL, NULL, fsSpec, NULL);
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+		error = FSGetCatalogInfo(&fsRef, kFSCatInfoNone, NULL, NULL, fsSpec, NULL);
+#pragma clang diagnostic pop
 		if(error == noErr)
 		{
-			DisposePtr((Ptr) fsRef);
 			return fsSpec;
 		}
 	}
-	DisposePtr((Ptr) fsRef);
 	return NULL;
 }
 

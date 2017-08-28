@@ -69,13 +69,12 @@ extern NSString *RKResourcePboardType;
 	NSString *fileName = [url path];
 	BOOL			succeeded = NO;
 	OSStatus		error = noErr;
-	FSRef			*fileRef = (FSRef *) NewPtrClear(sizeof(FSRef));
+	FSRef			fileRef;
 	ResFileRefNum	fileRefNum = 0;
 	OpenPanelDelegate *openPanelDelegate = [(ApplicationDelegate *)[NSApp delegate] openPanelDelegate];
 	
 	// bug: need to handle error better here
-	error = FSPathMakeRef((const UInt8 *)[fileName fileSystemRepresentation], fileRef, nil);
-	if(error) return NO;
+	if(!CFURLGetFSRef((__bridge CFURLRef)url, &fileRef)) return NO;
 	
 	// find out which fork to parse
 	if(NSAppKitVersionNumber < 700.0 || ![openPanelDelegate readOpenPanelForFork])
@@ -102,11 +101,11 @@ extern NSString *RKResourcePboardType;
 		[openPanelDelegate setReadOpenPanelForFork:NO];
 	}
 	
-	NSArray *forks = [(ApplicationDelegate *)[NSApp delegate] forksForFile:fileRef];
+	NSArray *forks = [(ApplicationDelegate *)[NSApp delegate] forksForFile:&fileRef];
 	
 	// attempt to open fork user selected as a resource map
 	SetResLoad(false);		// don't load "preload" resources
-	error = FSOpenResourceFile(fileRef, fork->length, (UniChar *) &fork->unicode, fsRdPerm, &fileRefNum);
+	error = FSOpenResourceFile(&fileRef, fork->length, (UniChar *) &fork->unicode, fsRdPerm, &fileRefNum);
 	if(error || !fileRefNum)
 	{
 		// if opening the user-selected fork fails, try to open resource fork instead
@@ -124,13 +123,13 @@ extern NSString *RKResourcePboardType;
 			else fork = rfork;
 		}
 		if(checkFork)
-*/			error = FSOpenResourceFile(fileRef, fork->length, (UniChar *) &fork->unicode, fsRdPerm, &fileRefNum);
+*/			error = FSOpenResourceFile(&fileRef, fork->length, (UniChar *) &fork->unicode, fsRdPerm, &fileRefNum);
 		if(error || !fileRefNum)
 		{
 			// if opening the resource fork fails, try to open data fork instead
 			error = FSGetDataForkName(fork);
 			if(error) return NO;
-			error = FSOpenResourceFile(fileRef, fork->length, (UniChar *) &fork->unicode, fsRdPerm, &fileRefNum);
+			error = FSOpenResourceFile(&fileRef, fork->length, (UniChar *) &fork->unicode, fsRdPerm, &fileRefNum);
 			if(error || !fileRefNum)
 			{
 				// bug: should check fork the user selected is empty before trying data fork
@@ -166,7 +165,7 @@ extern NSString *RKResourcePboardType;
 		
 		// get creator and type
 		FSCatalogInfo info;
-		error = FSGetCatalogInfo(fileRef, kFSCatInfoFinderInfo, &info, NULL, NULL, NULL);
+		error = FSGetCatalogInfo(&fileRef, kFSCatInfoFinderInfo, &info, NULL, NULL, NULL);
 		if(!error)
 		{
 			[self setType:[NSData dataWithBytes:&((FileInfo *)info.finderInfo)->fileType length:4]];
@@ -186,7 +185,7 @@ extern NSString *RKResourcePboardType;
 	{
 		// check current fork is not the fork we're going to parse
 		if(![forkName isEqualToString:selectedFork])
-			[self readFork:forkName asStreamFromFile:fileRef];
+			[self readFork:forkName asStreamFromFile:&fileRef];
 	}
 	
 	// tidy up loose ends
