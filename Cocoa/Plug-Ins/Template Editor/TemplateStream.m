@@ -25,17 +25,17 @@
 
 @implementation TemplateStream
 
-+ (id)streamWithBytes:(char *)d length:(unsigned int)l
++ (id)streamWithBytes:(char *)d length:(NSUInteger)l
 {
 	return [[[self alloc] initStreamWithBytes:d length:l] autorelease];
 }
 
-+ (id)substreamWithStream:(TemplateStream *)s length:(unsigned int)l
++ (id)substreamWithStream:(TemplateStream *)s length:(NSUInteger)l
 {
 	return [[[self alloc] initWithStream:s length:l] autorelease];
 }
 
-- (id)initStreamWithBytes:(char *)d length:(unsigned int)l
+- (id)initStreamWithBytes:(char *)d length:(NSUInteger)l
 {
 	self = [super init];
 	if(!self) return nil;
@@ -46,7 +46,7 @@
 	return self;
 }
 
-- (id)initWithStream:(TemplateStream *)s length:(unsigned int)l
+- (id)initWithStream:(TemplateStream *)s length:(NSUInteger)l
 {
 	return [self initStreamWithBytes:[s data] length:MIN(l, [s bytesToGo])];
 }
@@ -68,12 +68,12 @@
 	return bytesToGo;
 }
 
-- (void)setBytesToGo:(unsigned int)b
+- (void)setBytesToGo:(NSUInteger)b
 {
 	bytesToGo = b;
 }
 
-- (unsigned int)bytesToNull
+- (NSUInteger)bytesToNull
 {
 	unsigned int dist = 0;
 	while(dist < bytesToGo)
@@ -155,7 +155,7 @@
 	}
 }
 
-- (void)advanceAmount:(unsigned int)l pad:(BOOL)pad
+- (void)advanceAmount:(NSUInteger)l pad:(BOOL)pad
 {
 	if(l > bytesToGo) l = bytesToGo;
 	if(l > 0)
@@ -166,13 +166,13 @@
 	}
 }
 
-- (void)peekAmount:(unsigned int)l toBuffer:(void *)buffer
+- (void)peekAmount:(NSUInteger)l toBuffer:(void *)buffer
 {
 	if(l > bytesToGo) l = bytesToGo;
 	if(l > 0) memmove(buffer, data, l);
 }
 
-- (void)readAmount:(unsigned int)l toBuffer:(void *)buffer
+- (void)readAmount:(NSUInteger)l toBuffer:(void *)buffer
 {
 	if(l > bytesToGo) l = bytesToGo;
 	if(l > 0)
@@ -183,7 +183,7 @@
 	}
 }
 
-- (void)writeAmount:(unsigned int)l fromBuffer:(const void *)buffer
+- (void)writeAmount:(NSUInteger)l fromBuffer:(const void *)buffer
 {
 	if(l > bytesToGo) l = bytesToGo;
 	if(l > 0)

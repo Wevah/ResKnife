@@ -4,20 +4,20 @@
 @interface TemplateStream : NSObject
 {
 	char *data;
-	unsigned int bytesToGo;
+	NSUInteger bytesToGo;
 	NSMutableArray *counterStack;
 	NSMutableArray *keyStack;
 }
 
-+ (id)streamWithBytes:(char *)d length:(unsigned int)l;
-+ (id)substreamWithStream:(TemplateStream *)s length:(unsigned int)l;
++ (id)streamWithBytes:(char *)d length:(NSUInteger)l;
++ (id)substreamWithStream:(TemplateStream *)s length:(NSUInteger)l;
 
-- (id)initStreamWithBytes:(char *)d length:(unsigned int)l;
-- (id)initWithStream:(TemplateStream *)s length:(unsigned int)l;
+- (id)initStreamWithBytes:(char *)d length:(NSUInteger)l;
+- (id)initWithStream:(TemplateStream *)s length:(NSUInteger)l;
 
 - (char *)data;
-- (unsigned int)bytesToGo;
-- (void)setBytesToGo:(unsigned int)b;
+- (NSUInteger)bytesToGo;
+- (void)setBytesToGo:(NSUInteger)b;
 - (ElementOCNT *)counter;
 - (void)pushCounter:(ElementOCNT *)c;
 - (void)popCounter;
@@ -27,10 +27,10 @@
 
 - (Element *)readOneElement;	// For parsing of 'TMPL' resource as template.
 - (unsigned int)bytesToNull;
-- (void)advanceAmount:(unsigned int)l pad:(BOOL)pad;					// advance r/w pointer and optionally write padding bytes
-- (void)peekAmount:(unsigned int)l toBuffer:(void *)buffer;				// read bytes without advancing pointer
-- (void)readAmount:(unsigned int)l toBuffer:(void *)buffer;				// stream reading
-- (void)writeAmount:(unsigned int)l fromBuffer:(const void *)buffer;	// stream writing
+- (void)advanceAmount:(NSUInteger)l pad:(BOOL)pad;					// advance r/w pointer and optionally write padding bytes
+- (void)peekAmount:(NSUInteger)l toBuffer:(void *)buffer;				// read bytes without advancing pointer
+- (void)readAmount:(NSUInteger)l toBuffer:(void *)buffer;				// stream reading
+- (void)writeAmount:(NSUInteger)l fromBuffer:(const void *)buffer;	// stream writing
 - (NSMutableDictionary *)fieldRegistry;
 
 @end
