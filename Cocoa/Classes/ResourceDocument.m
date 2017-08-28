@@ -90,7 +90,7 @@ extern NSString *RKResourcePboardType;
 	else
 	{
 		// get selected fork from open panel, 10.3+
-		int row = [[openPanelDelegate forkTableView] selectedRow];
+		NSInteger row = [[openPanelDelegate forkTableView] selectedRow];
 		NSString *selectedFork = [(NSDictionary *)[[openPanelDelegate forks] objectAtIndex:row] objectForKey:@"forkname"];
 		fork = (HFSUniStr255 *) NewPtrClear(sizeof(HFSUniStr255));
 		fork->length = ([selectedFork length] < 255) ? (UInt16)[selectedFork length] : 255;
@@ -596,7 +596,7 @@ extern NSString *RKResourcePboardType;
 		[data writeToURL:[sheet URL] atomically:YES];
 }
 
-- (void)folderChoosePanelDidEnd:(NSSavePanel *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo
+- (void)folderChoosePanelDidEnd:(NSSavePanel *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
 {
 	if(returnCode == NSOKButton)
 	{

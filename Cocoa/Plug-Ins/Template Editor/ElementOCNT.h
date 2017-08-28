@@ -2,13 +2,13 @@
 
 @interface ElementOCNT : Element
 {
-	unsigned long value;
+	UInt32 value;
 }
 
 - (BOOL)countFromZero;
 
-- (void)setValue:(unsigned long)v;
-- (unsigned long)value;
+- (void)setValue:(unsigned int)v;
+- (unsigned int)value;
 
 - (void)increment;
 - (void)decrement;

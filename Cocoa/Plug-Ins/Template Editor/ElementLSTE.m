@@ -52,7 +52,7 @@
 		[stream advanceAmount:1 pad:NO];
 }
 
-- (unsigned int)sizeOnDisk
+- (NSUInteger)sizeOnDisk
 {
 	return writesZeroByte? 1:0;
 }

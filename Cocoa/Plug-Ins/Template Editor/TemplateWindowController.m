@@ -264,7 +264,7 @@
 	return ([item subElementCount] > 0);
 }
 
-- (int)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
+- (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
 {
 	if((item == nil) && (outlineView == displayList))
 		return [templateStructure count];
@@ -443,7 +443,7 @@ static NSString *RKTEDisplayTMPLIdentifier	= @"com.nickshanks.resknife.templatee
 - (void)keyDown:(NSEvent *)event
 {
 	Element *selectedItem = nil;
-	int selectedRow = [self selectedRow];
+	NSInteger selectedRow = [self selectedRow];
 	if(selectedRow != -1)
 		selectedItem = [self selectedItem];
 	

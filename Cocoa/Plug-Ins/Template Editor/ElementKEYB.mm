@@ -44,7 +44,7 @@
 // Before writeDataTo:is called, this is called to calculate the final resource size:
 //	This returns the sizes of all our sub-elements. If you subclass, add to that the size
 //	of this element itself.
-- (unsigned int)sizeOnDisk
+- (NSUInteger)sizeOnDisk
 {
 //	if(![[self label] isEqualToString: [[stream key] stringValue]])
 //		return 0;
@@ -77,12 +77,12 @@
 	return subElements;
 }
 
-- (int)subElementCount
+- (NSUInteger)subElementCount
 {
 	return [subElements count];
 }
 
-- (Element *)subElementAtIndex:(int)n
+- (Element *)subElementAtIndex:(NSUInteger)n
 {
 	return [subElements objectAtIndex:n];
 }

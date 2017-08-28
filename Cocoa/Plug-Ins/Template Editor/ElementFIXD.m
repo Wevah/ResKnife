@@ -14,7 +14,7 @@
 	[stream readAmount:sizeof(value) toBuffer:&value];
 }
 
-- (unsigned int)sizeOnDisk
+- (NSUInteger)sizeOnDisk
 {
 	return sizeof(value);
 }

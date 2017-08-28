@@ -161,7 +161,7 @@
 	// draw alternating blue/white backgrounds (if pre-10.3)
 	if(NSAppKitVersionNumber < 700.0)
 	{
-		int row = [oView rowForItem:item];
+		NSInteger row = [oView rowForItem:item];
 		if(row % 2)	[cell setBackgroundColor:[NSColor colorWithCalibratedRed:0.93 green:0.95 blue:1.0 alpha:1.0]];
 		else		[cell setBackgroundColor:[NSColor whiteColor]];
 					[cell setDrawsBackground:YES];
@@ -184,7 +184,7 @@
 
 - (void)keyDown:(NSEvent *)event
 {
-	int selectedRow = [self selectedRow];
+	NSInteger selectedRow = [self selectedRow];
 	if(selectedRow != -1 && [[event characters] isEqualToString:@"\r"])
 		[self editColumn:0 row:selectedRow withEvent:nil select:YES];
 	else if(selectedRow != -1 && [[event characters] isEqualToString:@"\x7F"])
@@ -205,7 +205,7 @@
 	// pressed tab, move to next editable field
 	else if(selector == @selector(insertTab:))
 	{
-		int newColumn = ([self editedColumn] +1) % [self numberOfColumns];
+		NSInteger newColumn = ([self editedColumn] +1) % [self numberOfColumns];
 		NSString *newColIdentifier = [[[self tableColumns] objectAtIndex:newColumn] identifier];
 		if([newColIdentifier isEqualToString:@"size"] || [newColIdentifier isEqualToString:@"attributes"])
 		{
@@ -222,7 +222,7 @@
 	// pressed shift-tab, move to previous editable field
 	else if(selector == @selector(insertBacktab:))
 	{
-		int newColumn = ([self editedColumn] + [self numberOfColumns] -1) % [self numberOfColumns];
+		NSInteger newColumn = ([self editedColumn] + [self numberOfColumns] -1) % [self numberOfColumns];
 		NSString *newColIdentifier = [[[self tableColumns] objectAtIndex:newColumn] identifier];
 		if([newColIdentifier isEqualToString:@"size"] || [newColIdentifier isEqualToString:@"attributes"])
 		{

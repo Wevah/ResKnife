@@ -4,7 +4,7 @@
 
 - (NSString *)hexRepresentation
 {
-	int currentByte = 0, dataLength = [self length];
+	NSUInteger currentByte = 0, dataLength = [self length];
 	char buffer[dataLength*3 -1], hex1, hex2;
 	char *bytes = (char *) [self bytes];
 	
@@ -32,7 +32,7 @@
 
 - (NSString *)asciiRepresentation
 {
-	int currentByte = 0, dataLength = [self length];
+	NSUInteger currentByte = 0, dataLength = [self length];
 	char buffer[dataLength];
 	char *bytes = (char *) [self bytes];
 	
@@ -49,7 +49,7 @@
 
 - (NSString *)nonLossyAsciiRepresentation
 {
-	int currentByte = 0, dataLength = [self length];
+	NSUInteger currentByte = 0, dataLength = [self length];
 	char buffer[dataLength];
 	char *bytes = (char *) [self bytes];
 	

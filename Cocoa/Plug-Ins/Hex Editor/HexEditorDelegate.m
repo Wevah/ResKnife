@@ -39,13 +39,13 @@
 
 - (NSString *)offsetRepresentation:(NSData *)data
 {
-	int dataLength = [data length], bytesPerRow = [controller bytesPerRow];
-	int rows = (dataLength / bytesPerRow) + ((dataLength % bytesPerRow)? 1:0);
+	NSUInteger dataLength = [data length], bytesPerRow = [controller bytesPerRow];
+	NSUInteger rows = (dataLength / bytesPerRow) + ((dataLength % bytesPerRow)? 1:0);
 	NSMutableString *representation = [NSMutableString string];
-	int	row;
+	NSUInteger	row;
 	
 	for( row = 0; row < rows; row++ )
-		[representation appendFormat:@"%08X:", row * bytesPerRow];
+		[representation appendFormat:@"%08lX:", row * bytesPerRow];
 	
 	return representation;
 }

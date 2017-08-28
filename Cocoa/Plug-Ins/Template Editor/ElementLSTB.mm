@@ -29,8 +29,8 @@
 	ElementOCNT *counter = nil;
 	NSMutableArray *array = [element subElements];			// get empty array created by -initWithType:label:
 	[element setGroupElementTemplate:groupElementTemplate];	// override group template (init sets this to self)
-	unsigned count = [[groupElementTemplate subElements] count];
-	for(unsigned i = 0; i < count; i++)
+	NSUInteger count = [[groupElementTemplate subElements] count];
+	for(NSUInteger i = 0; i < count; i++)
 	{
 		Element *subToClone = [[groupElementTemplate subElements] objectAtIndex:i];
 		if([subToClone class] == [ElementLSTB class] ||
@@ -73,7 +73,7 @@
 
 - (void)readDataForElements:(TemplateStream *)stream
 {
-	int counterValue = 0;
+	NSInteger counterValue = 0;
 	ElementOCNT *counter = nil;
 	for(unsigned i = 0; i < [subElements count]; i++)
 	{
@@ -88,7 +88,7 @@
 		// if we get to the end of the list and need more items, create them
 		if([element class] == [ElementLSTE class] && counterValue > 0)
 		{
-			int index = [subElements indexOfObject:element];
+			NSUInteger index = [subElements indexOfObject:element];
 			while(counterValue--)
 			{
 				// create subarray for new data
@@ -113,7 +113,7 @@
 - (void)readDataFrom:(TemplateStream *)stream
 {
 	BOOL isZeroTerminated = [type isEqualToString:@"LSTZ"];
-	unsigned int bytesToGoAtStart = [stream bytesToGo];
+	NSUInteger bytesToGoAtStart = [stream bytesToGo];
 	if(isZeroTerminated)
 	{
 		char termByte = 0;
@@ -165,7 +165,7 @@
 // Before writeDataTo:is called, this is called to calculate the final resource size:
 //	This returns the sizes of all our sub-elements. If you subclass, add to that the size
 //	of this element itself.
-- (unsigned int)sizeOnDisk
+- (NSUInteger)sizeOnDisk
 {
 	unsigned int size = 0;
 	NSEnumerator *enumerator = [subElements objectEnumerator];
@@ -196,12 +196,12 @@
 	return subElements;
 }
 
-- (int)subElementCount
+- (NSUInteger)subElementCount
 {
 	return [subElements count];
 }
 
-- (Element *)subElementAtIndex:(int)n
+- (Element *)subElementAtIndex:(NSUInteger)n
 {
 	return [subElements objectAtIndex:n];
 }

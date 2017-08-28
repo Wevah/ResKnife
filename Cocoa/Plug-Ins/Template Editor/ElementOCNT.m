@@ -23,7 +23,7 @@
 	if([self countFromZero]) value += 1;
 }
 
-- (unsigned int)sizeOnDisk
+- (NSUInteger)sizeOnDisk
 {
 	if     ([type isEqualToString:@"LCNT"] || [type isEqualToString:@"LZCT"])	return 4;
 	else if([type isEqualToString:@"BCNT"] || [type isEqualToString:@"BZCT"])	return 1;
@@ -48,12 +48,12 @@
 		   [type isEqualToString:@"LZCT"];
 }
 
-- (void)setValue:(unsigned long)v
+- (void)setValue:(unsigned int)v
 {
 	value = v;
 }
 
-- (unsigned long)value
+- (unsigned int)value
 {
 	return value;
 }
@@ -71,7 +71,7 @@
 
 - (NSString *)stringValue
 {
-	return [NSString stringWithFormat:@"%ld", value];
+	return [NSString stringWithFormat:@"%u", (unsigned int)value];
 }
 
 - (void)setStringValue:(NSString *)str

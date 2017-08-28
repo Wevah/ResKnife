@@ -25,7 +25,7 @@
 	[stream setBytesToGo:0];
 }
 
-- (unsigned int)sizeOnDisk
+- (NSUInteger)sizeOnDisk
 {
 	return [value length];
 }

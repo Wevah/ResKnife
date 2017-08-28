@@ -26,7 +26,7 @@
 - (void)popKey;
 
 - (Element *)readOneElement;	// For parsing of 'TMPL' resource as template.
-- (unsigned int)bytesToNull;
+- (NSUInteger)bytesToNull;
 - (void)advanceAmount:(NSUInteger)l pad:(BOOL)pad;					// advance r/w pointer and optionally write padding bytes
 - (void)peekAmount:(NSUInteger)l toBuffer:(void *)buffer;				// read bytes without advancing pointer
 - (void)readAmount:(NSUInteger)l toBuffer:(void *)buffer;				// stream reading

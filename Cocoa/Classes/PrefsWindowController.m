@@ -29,16 +29,16 @@
 	NSUserDefaults *defaults	= [NSUserDefaults standardUserDefaults];
 	BOOL preserveBackups		= [defaults boolForKey:@"PreserveBackups"];
 	BOOL autosave				= [defaults boolForKey:@"Autosave"];
-	int autosaveInterval		= [defaults integerForKey:@"AutosaveInterval"];
+	NSInteger autosaveInterval		= [defaults integerForKey:@"AutosaveInterval"];
 	BOOL deleteResourceWarning	= [defaults boolForKey:@"DeleteResourceWarning"];
 	BOOL createNewDocument		= [[defaults stringForKey:@"LaunchAction"] isEqualToString:@"OpenUntitledFile"];
 	BOOL displayOpenPanel		= [[defaults stringForKey:@"LaunchAction"] isEqualToString:@"DisplayOpenPanel"];
-	int launchAction			= createNewDocument? 1:(displayOpenPanel? 2:0);
+	NSInteger launchAction			= createNewDocument? 1:(displayOpenPanel? 2:0);
 	
 	// Éand set widgets accordingly
 	[[dataProtectionMatrix cellAtRow:preserveBackupsBox column:0] setState:preserveBackups];
 	[[dataProtectionMatrix cellAtRow:autosaveBox column:0] setState:autosave];
-	[autosaveIntervalField setStringValue:[NSString stringWithFormat:@"%d", autosaveInterval]];
+	[autosaveIntervalField setStringValue:[NSString stringWithFormat:@"%ld", autosaveInterval]];
 	[[dataProtectionMatrix cellAtRow:deleteResourceWarningBox column:0] setState:deleteResourceWarning];
 	[launchActionMatrix selectCellAtRow:launchAction column:0];
 }

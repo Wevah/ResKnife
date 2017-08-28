@@ -79,13 +79,13 @@
 
 /*** METHODS SUBCLASSES SHOULD OVERRIDE ***/
 
-- (int)subElementCount
+- (NSUInteger)subElementCount
 {
 	// default implementation suitable for most element types
 	return 0;
 }
 
-- (Element *)subElementAtIndex:(int)n
+- (Element *)subElementAtIndex:(NSUInteger)n
 {
 	// default implementation suitable for most element types
 	return nil;
@@ -105,7 +105,7 @@
 
 // Before writeDataTo:is called, this is called to calculate the final resource size:
 //	Items with sub-elements should return the sum of the sizes of all their sub-elements here as well.
-- (unsigned int)sizeOnDisk
+- (NSUInteger)sizeOnDisk
 {
 	// default implementation suitable for dimentionless element types
 	return 0;

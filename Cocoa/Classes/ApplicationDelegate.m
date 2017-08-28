@@ -38,7 +38,7 @@
 - (void)awakeFromNib
 {
 	// Part of my EvilPlanª to find out how many people use ResKnife and how often!
-	int launchCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"LaunchCount"];
+	NSInteger launchCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"LaunchCount"];
 	[[NSUserDefaults standardUserDefaults] setInteger:launchCount + 1 forKey:@"LaunchCount"];
 	
 	// initalise an empty icon cache and create timer used to pre-cache a number of common icons

@@ -27,7 +27,7 @@
 	[stream advanceAmount:length pad:NO];
 }
 
-- (unsigned int)sizeOnDisk
+- (NSUInteger)sizeOnDisk
 {
 	return length;
 }

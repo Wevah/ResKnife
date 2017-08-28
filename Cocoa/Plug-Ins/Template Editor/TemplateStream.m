@@ -63,7 +63,7 @@
 	return data;
 }
 
-- (unsigned int)bytesToGo
+- (NSUInteger)bytesToGo
 {
 	return bytesToGo;
 }

@@ -47,7 +47,7 @@
 }
 
 // table view data source methods
-- (int)numberOfRowsInTableView:(NSTableView *)tableView
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
 	return [forks count];
 }

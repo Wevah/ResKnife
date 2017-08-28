@@ -18,7 +18,7 @@
 	value = CFSwapInt64BigToHost(tmp);
 }
 
-- (unsigned int)sizeOnDisk
+- (NSUInteger)sizeOnDisk
 {
 	return SIZE_ON_DISK;
 }

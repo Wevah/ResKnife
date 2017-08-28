@@ -85,9 +85,9 @@
 	// alignment unhandled here
 }
 
-- (unsigned int)sizeOnDisk
+- (NSUInteger)sizeOnDisk
 {
-	UInt32 length = [value lengthOfBytesUsingEncoding:NSMacOSRomanStringEncoding];
+	NSUInteger length = [value lengthOfBytesUsingEncoding:NSMacOSRomanStringEncoding];
 	if(_maxLength && length > _maxLength) length = _maxLength;
 	if(length < _minLength) length = _minLength;
 	length += _lengthBytes + (_terminatingByte? 1:0);
@@ -100,7 +100,7 @@
 - (void)writeDataTo:(TemplateStream *)stream
 {
 	// write string
-	UInt32 length = [value length], writeLength;
+	NSUInteger length = [value length], writeLength;
 	if(_maxLength && length > _maxLength) length = _maxLength;
 #if __BIG_ENDIAN__
 	writeLength = length << ((4 - _lengthBytes) << 3);
@@ -131,7 +131,7 @@
 	// pad to minimum length with spaces
 	if(length < _minLength)
 	{
-		SInt32 padAmount = _minLength - length;
+		NSInteger padAmount =_minLength - length;
 		while(padAmount > 0)
 		{
 			UInt32 spaces = '    ';

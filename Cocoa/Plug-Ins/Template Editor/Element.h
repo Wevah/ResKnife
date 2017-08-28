@@ -43,15 +43,15 @@
 - (BOOL)editable;
 
 // Items that have sub-items (like LSTB, LSTZ, LSTC and other lists) should implement these:
-- (int)subElementCount;
-- (Element *)subElementAtIndex:(int)n;
+- (NSUInteger)subElementCount;
+- (Element *)subElementAtIndex:(NSUInteger)n;
 - (void)readSubElementsFrom:(TemplateStream *)stream;
 
 // This is called on an item of your class when displaying resource data using a template that uses your field:
 - (void)readDataFrom:(TemplateStream *)stream;
 
 // The following are used to write resource data back out:
-- (unsigned int)sizeOnDisk;
+- (NSUInteger)sizeOnDisk;
 - (void)writeDataTo:(TemplateStream *)stream;
 
 /* Apart from these messages, a Element may also implement the IBActions for
