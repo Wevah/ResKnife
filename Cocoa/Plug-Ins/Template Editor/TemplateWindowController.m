@@ -141,7 +141,7 @@
 	// reload the view
 	id item;
 	[dataList reloadData];
-	int row = [dataList numberOfRows];
+	NSInteger row = [dataList numberOfRows];
 	while((item = [dataList itemAtRow: --row]))
 	{
 		if([dataList isExpandable: item] && ![dataList isItemExpanded: item])
