@@ -15,12 +15,6 @@
 	return self;
 }
 
-- (void)dealloc
-{
-	[subElements release];
-	[super dealloc];
-}
-
 - (id)copyWithZone:(NSZone *)zone
 {
 	ElementLSTB *element = [super copyWithZone:zone];
@@ -47,7 +41,7 @@
 		}
 		else
 		{
-			Element *clone = [[subToClone copy] autorelease];
+			Element *clone = [subToClone copy];
 			if([clone class] == [ElementOCNT class])
 				counter = (ElementOCNT *)clone;
 			[array addObject:clone];
@@ -92,7 +86,7 @@
 			while(counterValue--)
 			{
 				// create subarray for new data
-				ElementLSTB *list = [[[(ElementLSTE *)element groupElementTemplate] copy] autorelease];
+				ElementLSTB *list = [[(ElementLSTE *)element groupElementTemplate] copy];
 				[subElements insertObject:list atIndex:index++];
 				[list setParentArray:subElements];
 				[list setCountElement:counter];
@@ -137,7 +131,7 @@
 			}
 			
 			// actually read the item
-			Element *nextItem = [[groupElementTemplate copy] autorelease];
+			Element *nextItem = [groupElementTemplate copy];
 			[nextItem setParentArray:nil];			// Make sure it doesn't get into this "if" clause.
 			[parentArray addObject:nextItem];		// Add it below ourselves.
 			[nextItem readDataFrom:stream];			// Read it the same way we were.
@@ -186,9 +180,7 @@
 
 - (void)setSubElements:(NSMutableArray *)a
 {
-	id old = subElements;
-	subElements = [a retain];
-	[old release];
+	subElements = a;
 }
 
 - (NSMutableArray *)subElements
@@ -230,7 +222,7 @@
 
 - (IBAction)createListEntry:(id)sender
 {
-	ElementLSTB *list = [[groupElementTemplate copy] autorelease];
+	ElementLSTB *list = [groupElementTemplate copy];
 	[parentArray insertObject:list atIndex:[parentArray indexOfObject:self]];
 	[list setParentArray:parentArray];
 	[list setCountElement:countElement];

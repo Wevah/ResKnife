@@ -12,9 +12,6 @@
 
 - (void)updateStrings
 {
-	[findString autorelease];
-	[replaceString autorelease];
-	
 	findString = [[[findReplaceForm cellAtIndex:0] stringValue] copy];
 	replaceString = [[[findReplaceForm cellAtIndex:1] stringValue] copy];
 }
@@ -58,8 +55,7 @@
 
 - (IBAction)findWithSelection:(id)sender
 {
-	[findString autorelease];
-	findString = [[NSString string] retain];
+	findString = [NSString string];
 	NSLog( @"Finding \"%@\"", findString );
 }
 

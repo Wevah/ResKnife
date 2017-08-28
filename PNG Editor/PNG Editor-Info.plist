@@ -30,6 +30,7 @@
 	<array>
 		<string>PNG </string>
 		<string>PNGI</string>
+		<string>icns</string>
 	</array>
 </dict>
 </plist>

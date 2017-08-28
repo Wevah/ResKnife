@@ -35,12 +35,12 @@
 	liveEdit = NO;
 	if(liveEdit)
 	{
-		resource = [(id)newResource retain];	// resource to work on
+		resource = (id)newResource;	// resource to work on
 		backup = [(NSObject *)resource copy];	// for reverting only
 	}
 	else
 	{
-		backup = [(id)newResource retain];		// actual resource to change when saving data
+		backup = (id)newResource;		// actual resource to change when saving data
 		resource = [(NSObject *)backup copy];	// resource to work on
 	}
 	templateStructure = [[NSMutableArray alloc] init];
@@ -63,12 +63,6 @@
 - (void)dealloc
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	[toolbarItems release];
-	[templateStructure release];
-	[resourceStructure release];
-	[(id)resource release];
-	[(id)backup release];
-	[super dealloc];
 }
 /*
 - (void)windowControllerDidLoadNib:(NSWindowController *)controller
@@ -102,7 +96,7 @@
 {
 	if(!liveEdit)
 		// bug: should display alert asking if you want to replace data in this editor or reassert this data, revoking the other editor's changes
-		[resource setData:[[[backup data] copy] autorelease]];
+		[resource setData:[[backup data] copy]];
 	[self loadResource];
 }
 
@@ -117,7 +111,7 @@
 	NSEnumerator *enumerator = [templateStructure objectEnumerator];
 	while(element = [enumerator nextObject])
 	{
-		Element *clone = [[element copy] autorelease];	// copy the template object.
+		Element *clone = [element copy];	// copy the template object.
 //		NSLog(@"clone = %@; resourceStructure = %@", clone, resourceStructure);
 		[resourceStructure addObject:clone];			// add it to our parsed resource data list. Do this right away so the element can append other items should it desire to.
 		[clone setParentArray:resourceStructure];		// the parent for these is the root level resourceStructure object
@@ -204,14 +198,14 @@
 	{
 		[[NSNotificationCenter defaultCenter] removeObserver:self name:ResourceDataDidChangeNotification object:resource];
 		[resource setData:newData];
-		[backup setData:[[newData copy] autorelease]];
+		[backup setData:[newData copy]];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resourceDataDidChange:) name:ResourceDataDidChangeNotification object:resource];
 	}
 	else
 	{
 		[[NSNotificationCenter defaultCenter] removeObserver:self name:ResourceDataDidChangeNotification object:backup];
 		[resource setData:newData];
-		[backup setData:[[newData copy] autorelease]];
+		[backup setData:[newData copy]];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resourceDataDidChange:) name:ResourceDataDidChangeNotification object:backup];
 		[self setDocumentEdited:NO];
 	}
@@ -219,7 +213,7 @@
 
 - (void)revertResource:(id)sender
 {
-	[resource setData:[[[backup data] copy] autorelease]];
+	[resource setData:[[backup data] copy]];
 }
 
 - (void)readTemplate:(id<ResKnifeResourceProtocol>)tmplRes
@@ -396,7 +390,7 @@ static NSString *RKTEDisplayTMPLIdentifier	= @"com.nickshanks.resknife.templatee
 	NSToolbarItem *item;
 	[toolbarItems removeAllObjects];	// just in case this method is called more than once per document (which it shouldn't be!)
 	
-	item = [[[NSToolbarItem alloc] initWithItemIdentifier:RKTEDisplayTMPLIdentifier] autorelease];
+	item = [[NSToolbarItem alloc] initWithItemIdentifier:RKTEDisplayTMPLIdentifier];
 	[item setLabel:NSLocalizedString(@"Parsed TMPL", nil)];
 	[item setPaletteLabel:NSLocalizedString(@"Display Parsed TMPL", nil)];
 	[item setToolTip:NSLocalizedString(@"Display Parsed TMPL", nil)];
@@ -405,7 +399,7 @@ static NSString *RKTEDisplayTMPLIdentifier	= @"com.nickshanks.resknife.templatee
 	[item setAction:@selector(toggle:)];
 	[toolbarItems setObject:item forKey:RKTEDisplayTMPLIdentifier];
 	
-	NSToolbar *toolbar = [[[NSToolbar alloc] initWithIdentifier:RKTEToolbarIdentifier] autorelease];
+	NSToolbar *toolbar = [[NSToolbar alloc] initWithIdentifier:RKTEToolbarIdentifier];
 	
 	// set toolbar properties
 	[toolbar setVisible:NO];

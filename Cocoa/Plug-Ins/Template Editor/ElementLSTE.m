@@ -13,17 +13,9 @@
 	return element;
 }
 
-- (void)dealloc
-{
-	[groupElementTemplate release];
-	[super dealloc];
-}
-
 - (void)setGroupElementTemplate:(ElementLSTB *)e
 {
-	id old = groupElementTemplate;
-	groupElementTemplate = [e retain];
-	[old release];
+	groupElementTemplate = e;
 }
 
 - (ElementLSTB *)groupElementTemplate
@@ -75,7 +67,7 @@
 
 - (IBAction)createListEntry:(id)sender
 {
-	ElementLSTB *list = [[groupElementTemplate copy] autorelease];
+	ElementLSTB *list = [groupElementTemplate copy];
 	[parentArray insertObject:list atIndex:[parentArray indexOfObject:self]];
 	[list setParentArray:parentArray];
 	[list setCountElement:countElement];

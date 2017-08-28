@@ -7,7 +7,7 @@
 {
 	self = [super initForType:t withLabel:l];
 	if(!self) return nil;
-	value = [@"" retain];
+	value = @"";
 	if     ([t isEqualToString:@"PSTR"] ||
 			[t isEqualToString:@"BSTR"])	{ _lengthBytes = 1; _maxLength = UINT8_MAX;  _minLength = 0; _terminatingByte = NO; _pad = kNoPadding; _alignment = 0; }
 	else if([t isEqualToString:@"WSTR"])	{ _lengthBytes = 2; _maxLength = UINT16_MAX; _minLength = 0; _terminatingByte = NO; _pad = kNoPadding; _alignment = 0; }
@@ -23,12 +23,6 @@
 	else if([t isEqualToString:@"KCHR"])	{ _lengthBytes = 0; _maxLength = 1; _minLength = 1; _terminatingByte = NO; _pad = kNoPadding; _alignment = 0; }
 	else if([t isEqualToString:@"KTYP"])	{ _lengthBytes = 0; _maxLength = 4; _minLength = 4; _terminatingByte = NO; _pad = kNoPadding; _alignment = 0; }
 	return self;
-}
-
-- (void)dealloc
-{
-	[value release];
-	[super dealloc];
 }
 
 - (id)copyWithZone:(NSZone*)zone
@@ -71,10 +65,10 @@
 	if(_minLength) memset(buffer, 0, _minLength);
 	[stream readAmount:length toBuffer:buffer];
 	if([NSString instancesRespondToSelector:@selector(initWithBytesNoCopy:length:encoding:freeWhenDone:)])	// 10.3
-		[self setStringValue:[[[NSString alloc] initWithBytesNoCopy:buffer length:length encoding:NSMacOSRomanStringEncoding freeWhenDone:YES] autorelease]];
+		[self setStringValue:[[NSString alloc] initWithBytesNoCopy:buffer length:length encoding:NSMacOSRomanStringEncoding freeWhenDone:YES]];
 	else
 	{
-		[self setStringValue:[[[NSString alloc] initWithBytes:buffer length:length encoding:NSMacOSRomanStringEncoding] autorelease]];
+		[self setStringValue:[[NSString alloc] initWithBytes:buffer length:length encoding:NSMacOSRomanStringEncoding]];
 		free(buffer);
 	}
 	
@@ -152,9 +146,7 @@
 
 - (void)setStringValue:(NSString *)str
 {
-	id old = value;
 	value = [str copy];
-	[old release];
 }
 
 - (void)setMaxLength:(UInt32)v { _maxLength = v; }

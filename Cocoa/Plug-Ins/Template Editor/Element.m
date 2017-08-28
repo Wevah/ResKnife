@@ -4,7 +4,7 @@
 
 + (id)elementForType:(NSString *)t withLabel:(NSString *)l
 {
-	return [[[self alloc]initForType:t withLabel:l] autorelease];
+	return [[self alloc] initForType:t withLabel:l];
 }
 
 - (id)initForType:(NSString *)t withLabel:(NSString *)l
@@ -14,13 +14,6 @@
 	label = [l copy];
 	type = [t copy];
 	return self;
-}
-
-- (void)dealloc
-{
-	[label release];
-	[type release];
-	[super dealloc];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -44,9 +37,7 @@
 
 - (void)setType:(NSString *)t
 {
-	id old = type;
 	type = [t copy];
-	[old release];
 }
 
 - (NSString *)type
@@ -56,9 +47,7 @@
 
 - (void)setLabel:(NSString *)l
 {
-	id old = label;
 	label = [l copy];
-	[old release];
 }
 
 - (NSString *)label

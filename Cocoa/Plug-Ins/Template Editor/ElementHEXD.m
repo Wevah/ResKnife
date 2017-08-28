@@ -37,9 +37,7 @@
 
 - (void)setValue:(NSData *)d
 {
-	id old = value;
-	value = [d retain];
-	[old release];
+	value = d;
 }
 
 - (NSData *)value

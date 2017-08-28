@@ -10,12 +10,6 @@
 	return self;
 }
 
-- (void)dealloc
-{
-	[subElements release];
-	[super dealloc];
-}
-
 - (id)copyWithZone:(NSZone *)zone
 {
 	return nil;
@@ -67,9 +61,7 @@
 
 - (void)setSubElements:(NSMutableArray *)a
 {
-	id old = subElements;
-	subElements = [a retain];
-	[old release];
+	subElements = a;
 }
 
 - (NSMutableArray *)subElements
