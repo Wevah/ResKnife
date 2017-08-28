@@ -452,12 +452,18 @@ extern NSString *RKResourcePboardType;
 #pragma clang diagnostic ignored "-Wdeprecated"
 
 		error = FSPathMakeRef((const UInt8 *)[[fileName stringByDeletingLastPathComponent] UTF8String], &parentRef, nil);
-		if(error) return NO;
+		if(error) {
+			free(fileRef);
+			return NO;
+		}
 		error = FSCreateFileUnicode(&parentRef, 0, NULL, kFSCatInfoNone, NULL, fileRef, NULL);
 
 #pragma clang diagnostic pop
 
-		if(error || !fileRef) return NO;
+		if(error || !fileRef) {
+			free(fileRef);
+			return NO;
+		}
 	}
 	
 	Resource *resource;
@@ -1277,10 +1283,10 @@ static NSString *RKViewItemIdentifier		= @"com.nickshanks.resknife.toolbar.view"
 			[remainingResources addObjectsFromArray:[enumerator allObjects]];
 
 			NSAlert *alert = [[NSAlert alloc] init];
-			alert.window.title = @"Paste Error";
-			[alert addButtonWithTitle:@"Unique ID"];
-			[alert addButtonWithTitle:@"Skip"];
-			[alert addButtonWithTitle:@"Overwrite"];
+			alert.window.title = NSLocalizedString(@"Paste Error", @"Paste Error title");
+			[alert addButtonWithTitle:NSLocalizedString(@"Unique ID", @"Unique ID button title")];
+			[alert addButtonWithTitle:NSLocalizedString(@"Skip", @"Skip button title")];
+			[alert addButtonWithTitle:NSLocalizedString(@"Overwrite", @"Overwrite button title")];
 			alert.messageText = [NSString stringWithFormat:@"There already exists a resource of type %@ with ID %@. Do you wish to assign the pasted resource a unique ID, overwrite the existing resource, or skip pasting of this resource?", resource.type, resource.resID];
 			[alert beginSheetModalForWindow:mainWindow completionHandler:^(NSModalResponse returnCode) {
 				Resource *resource = [remainingResources objectAtIndex:0];

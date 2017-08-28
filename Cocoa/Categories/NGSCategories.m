@@ -139,7 +139,11 @@
 	// caller is responsible for disposing of the FSRef (method is a 'create' method)
 	FSRef *fsRef = (FSRef *) malloc(sizeof(FSRef));
 	OSStatus error = FSPathMakeRef((const UInt8 *)[self fileSystemRepresentation], fsRef, NULL);
-	if(error != noErr) fsRef = NULL;
+	if(error != noErr) {
+		free(fsRef);
+		fsRef = NULL;
+	}
+
 	return fsRef;
 
 #pragma clang diagnostic pop

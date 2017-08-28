@@ -12,6 +12,8 @@
 #pragma clang diagnostic pop
 	if(error == noErr)
 		return fsRef;
+
+	free(fsRef);
 	return NULL;
 }
 
@@ -35,6 +37,8 @@
 			return fsSpec;
 		}
 	}
+
+	free(fsSpec);
 	return NULL;
 }
 
