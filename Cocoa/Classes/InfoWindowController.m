@@ -114,14 +114,14 @@ FSGetCatalogInfo:
 	{
 		// get sizes of forks as they are on disk
 		UInt64 dataLogicalSize = 0, rsrcLogicalSize = 0;
-		FSRef *fileRef = (FSRef *) NewPtrClear(sizeof(FSRef));
-		if(fileRef && [currentDocument fileURL])
-		{
-			OSStatus error = FSPathMakeRef((unsigned char *)[[[currentDocument fileURL] path] fileSystemRepresentation], fileRef, nil);
-			if(!error) FSGetForkSizes(fileRef, &dataLogicalSize, &rsrcLogicalSize);
-		}
-		if(fileRef) DisposePtr((Ptr) fileRef);
 		
+		if([currentDocument fileURL])
+		{
+			FSRef fileRef;
+			OSStatus error = FSPathMakeRef((unsigned char *)[[[currentDocument fileURL] path] fileSystemRepresentation], &fileRef, nil);
+			if(!error) FSGetForkSizes(&fileRef, &dataLogicalSize, &rsrcLogicalSize);
+		}
+
 		// set info window elements to correct values
 		[[self window] setTitle:NSLocalizedString(@"Document Info",nil)];
 		if([currentDocument fileURL])	// document has been saved
