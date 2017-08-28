@@ -46,10 +46,7 @@
 
 - (void)setStringValue:(NSString *)str
 {
-	char cstr[256];
-	char *endPtr = cstr + 255;
-	strncpy(cstr, [str cStringUsingEncoding:NSMacOSRomanStringEncoding], 255);
-	value = strtol(cstr, &endPtr, 10);
+	value = str.intValue;
 }
 
 @end
