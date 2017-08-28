@@ -191,7 +191,12 @@ FSGetCatalogInfo:
 {
 	if(![[nameView stringValue] isEqualToString:[selectedResource name]])
 		[self nameDidChange:nameView];
-	selectedResource = (Resource *) [[notification object] selectedItem];
+
+	selectedResource = [[notification object] selectedItem];
+
+	if (![selectedResource isKindOfClass:[Resource class]])
+		selectedResource = nil;
+
 	[self updateInfoWindow];
 }
 
