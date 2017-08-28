@@ -117,4 +117,8 @@
 	[imageView setImage:image];
 }
 
+- (void)resourceDataDidChange:(NSNotification *)notification {
+	
+}
+
 @end
