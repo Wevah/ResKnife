@@ -66,7 +66,6 @@ extern NSString *RKResourcePboardType;
 
 - (BOOL)readFromURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError **)outError
 {
-	NSString *fileName = [url path];
 	BOOL			succeeded = NO;
 	OSStatus		error = noErr;
 	FSRef			fileRef;
@@ -74,8 +73,11 @@ extern NSString *RKResourcePboardType;
 	OpenPanelDelegate *openPanelDelegate = [(ApplicationDelegate *)[NSApp delegate] openPanelDelegate];
 	
 	// bug: need to handle error better here
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 	if(!CFURLGetFSRef((__bridge CFURLRef)url, &fileRef)) return NO;
-	
+#pragma clang diagnostic pop
+
 	// find out which fork to parse
 	if(NSAppKitVersionNumber < 700.0 || ![openPanelDelegate readOpenPanelForFork])
 	{
@@ -83,7 +85,11 @@ extern NSString *RKResourcePboardType;
 		
 		// bug:	unimplemented - always tells app to try resource fork first
 		fork = (HFSUniStr255 *) malloc(sizeof(HFSUniStr255));
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 		error = FSGetResourceForkName(fork);
+#pragma clang diagnostic pop
+
 		if(error) return NO;
 	}
 	else
@@ -91,7 +97,7 @@ extern NSString *RKResourcePboardType;
 		// get selected fork from open panel, 10.3+
 		NSInteger row = [[openPanelDelegate forkTableView] selectedRow];
 		NSString *selectedFork = [(NSDictionary *)[[openPanelDelegate forks] objectAtIndex:row] objectForKey:@"forkname"];
-		fork = (HFSUniStr255 *) NewPtrClear(sizeof(HFSUniStr255));
+		fork = malloc(sizeof(HFSUniStr255));
 		fork->length = ([selectedFork length] < 255) ? (UInt16)[selectedFork length] : 255;
 		if(fork->length > 0)
 			[selectedFork getCharacters:fork->unicode range:NSMakeRange(0,fork->length)];
@@ -104,12 +110,19 @@ extern NSString *RKResourcePboardType;
 	NSArray *forks = [(ApplicationDelegate *)[NSApp delegate] forksForFile:&fileRef];
 	
 	// attempt to open fork user selected as a resource map
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 	SetResLoad(false);		// don't load "preload" resources
 	error = FSOpenResourceFile(&fileRef, fork->length, (UniChar *) &fork->unicode, fsRdPerm, &fileRefNum);
+#pragma clang diagnostic pop
+
 	if(error || !fileRefNum)
 	{
 		// if opening the user-selected fork fails, try to open resource fork instead
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 		error = FSGetResourceForkName(fork);
+#pragma clang diagnostic pop
 		if(error) return NO;
 /*		HFSUniStr255 *rfork;
 		error = FSGetResourceForkName(rfork);
@@ -123,13 +136,21 @@ extern NSString *RKResourcePboardType;
 			else fork = rfork;
 		}
 		if(checkFork)
-*/			error = FSOpenResourceFile(&fileRef, fork->length, (UniChar *) &fork->unicode, fsRdPerm, &fileRefNum);
+*/
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+		error = FSOpenResourceFile(&fileRef, fork->length, (UniChar *) &fork->unicode, fsRdPerm, &fileRefNum);
+#pragma clang diagnostic pop
+
 		if(error || !fileRefNum)
 		{
 			// if opening the resource fork fails, try to open data fork instead
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 			error = FSGetDataForkName(fork);
 			if(error) return NO;
 			error = FSOpenResourceFile(&fileRef, fork->length, (UniChar *) &fork->unicode, fsRdPerm, &fileRefNum);
+#pragma clang diagnostic pop
 			if(error || !fileRefNum)
 			{
 				// bug: should check fork the user selected is empty before trying data fork
@@ -137,7 +158,10 @@ extern NSString *RKResourcePboardType;
 				if([fAlloc unsignedLongLongValue] > 0)
 				{
 					// data fork is not empty, check resource fork
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 					error = FSGetResourceForkName(fork);
+#pragma clang diagnostic pop
 					if(error) return NO;
 					fAlloc = [[forks firstObjectReturningValue:[NSString stringWithCharacters:fork->unicode length:fork->length] forKey:@"forkname"] objectForKey:@"forkallocation"];
 					if([fAlloc unsignedLongLongValue] > 0)
@@ -153,7 +177,10 @@ extern NSString *RKResourcePboardType;
 			}
 		}
 	}
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 	SetResLoad(true);			// restore resource loading as soon as is possible
+#pragma clang diagnostic pop
 	
 	if(!_createFork)
 	{
@@ -165,7 +192,10 @@ extern NSString *RKResourcePboardType;
 		
 		// get creator and type
 		FSCatalogInfo info;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 		error = FSGetCatalogInfo(&fileRef, kFSCatInfoFinderInfo, &info, NULL, NULL, NULL);
+#pragma clang diagnostic pop
 		if(!error)
 		{
 			[self setType:[NSData dataWithBytes:&((FileInfo *)info.finderInfo)->fileType length:4]];
@@ -189,7 +219,12 @@ extern NSString *RKResourcePboardType;
 	}
 	
 	// tidy up loose ends
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 	if(fileRefNum) FSCloseFork(fileRefNum);
+#pragma clang diagnostic pop
+
+
 	//DisposePtr((Ptr) fileRef);
 	return succeeded;
 }
@@ -226,10 +261,13 @@ extern NSString *RKResourcePboardType;
 	
 	// read fork contents into buffer, bug: assumes no errors
 	FSIORefNum forkRefNum;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 	FSOpenFork(fileRef, uniForkName.length, uniForkName.unicode, fsRdPerm, &forkRefNum);
 	FSReadFork(forkRefNum, fsFromStart, 0, forkLength, buffer, &forkLength);
 	FSCloseFork(forkRefNum);
-	
+#pragma clang diagnostic pop
+
 	// create data
 	NSData *data = [NSData dataWithBytesNoCopy:buffer length:forkLength freeWhenDone:YES];
 	if(!data) return NO;
@@ -240,7 +278,11 @@ extern NSString *RKResourcePboardType;
 	
 	// customise fork name for default data & resource forks - bug: this should really be in resource data source!!
 	HFSUniStr255 resourceForkName;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 	OSErr error = FSGetResourceForkName(&resourceForkName);
+#pragma clang diagnostic pop
+
 	if(!error && [[resource name] isEqualToString:@""])			// bug: should use FSGetDataForkName()
 		[resource _setName:NSLocalizedString(@"Data Fork", nil)];
 	else if(!error && [[resource name] isEqualToString:[NSString stringWithCharacters:resourceForkName.unicode length:resourceForkName.length]])
@@ -254,6 +296,8 @@ extern NSString *RKResourcePboardType;
 -(BOOL)readResourceMap:(ResFileRefNum)fileRefNum
 {
 	OSStatus error = noErr;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 	ResFileRefNum oldResFile = CurResFile();
 	UseResFile(fileRefNum);
 	
@@ -285,10 +329,12 @@ extern NSString *RKResourcePboardType;
 			}
 			short attrsShort = GetResAttrs(resourceHandle);
 			HLockHi(resourceHandle);
+
 #if __LITTLE_ENDIAN__
 			CoreEndianFlipData(kCoreEndianResourceManagerDomain, resTypeCode, resIDShort, *resourceHandle, sizeLong, true);
 #endif
-			
+#pragma clang diagnostic pop
+
 			// cool: "The advantage of obtaining a methodÕs implementation and calling it as a function is that you can invoke the implementation multiple times within a loop, or similar C construct, without the overhead of Objective-C messaging."
 			
 			// create the resource & add it to the array
@@ -305,14 +351,19 @@ extern NSString *RKResourcePboardType;
 				NSLog(@"GetResourceSizeOnDisk() reported incorrect size for %@ resource %@ in %@: %li should be %li", resType, resID, [self displayName], badSize, sizeLong);
 			[name release];
 			[resType release];
-			
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 			HUnlock(resourceHandle);
 			ReleaseResource(resourceHandle);
+#pragma clang diagnostic pop
 		}
 	}
 	
 	// save resource map and clean up
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 	UseResFile(oldResFile);
+#pragma clang diagnostic pop
 	return YES;
 }
 
@@ -323,27 +374,31 @@ extern NSString *RKResourcePboardType;
 
 - (BOOL)writeToURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError **)outError
 {
-	NSString *fileName = [url path];
 	OSStatus error = noErr;
 	ResFileRefNum fileRefNum = 0;
-	FSRef *parentRef	= (FSRef *) NewPtrClear(sizeof(FSRef));
-	FSRef *fileRef		= (FSRef *) NewPtrClear(sizeof(FSRef));
+	FSRef parentRef;
+	FSRef fileRef;
 	
 	// create and open file for writing
 	// bug: doesn't set the cat info to the same as the old file
-	unichar *uniname = (unichar *) NewPtrClear(sizeof(unichar) *256);
-	[[fileName lastPathComponent] getCharacters:uniname];
-	error = FSPathMakeRef((const UInt8 *)[[fileName stringByDeletingLastPathComponent] UTF8String], parentRef, nil);
-	
-	if (error != noErr)
-		NSLog(@"FSPathMakeRef got error %d", error);
-	
+	NSString *newName = url.lastPathComponent;
+	unichar uniname[sizeof(unichar) * 256];
+	[newName getCharacters:uniname];
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+
+	if (!CFURLGetFSRef((__bridge CFURLRef)url.URLByDeletingLastPathComponent, &parentRef))
+		NSLog(@"CFURLGetFSRef failed");
+
 	if(fork)
-		error = FSCreateResourceFile(parentRef, [[fileName lastPathComponent] length], (UniChar *) uniname, kFSCatInfoNone, NULL, fork->length, (UniChar *) &fork->unicode, fileRef, NULL);
-	else error = FSCreateResourceFile(parentRef, [[fileName lastPathComponent] length], (UniChar *) uniname, kFSCatInfoNone, NULL, 0, NULL, fileRef, NULL);
-	
+		error = FSCreateResourceFile(&parentRef, newName.length, (UniChar *)uniname, kFSCatInfoNone, NULL, fork->length, (UniChar *) &fork->unicode, &fileRef, NULL);
+	else error = FSCreateResourceFile(&parentRef, newName.length, (UniChar *)uniname, kFSCatInfoNone, NULL, 0, NULL, &fileRef, NULL);
+
+#pragma clang diagnostic pop
+
 	// write any data streams to file
-	BOOL succeeded = [self writeForkStreamsToFile:fileName];
+	BOOL succeeded = [self writeForkStreamsToFile:url.path];
 //	FSRef *fileRef		= [fileName createFSRef];
 	
 /*	error = FSPathMakeRef((const UInt8 *)[fileName UTF8String], fileRef, nil);
@@ -360,21 +415,30 @@ extern NSString *RKResourcePboardType;
 		[NSTimer scheduledTimerWithTimeInterval:0.0 target:self selector:@selector(setTypeCreatorAfterSave:) userInfo:nil repeats:NO];
 		
 		// open fork as resource map
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+
 		if(fork)
-			error = FSOpenResourceFile(fileRef, fork->length, (UniChar *) &fork->unicode, fsWrPerm, &fileRefNum);
-		else error = FSOpenResourceFile(fileRef, 0, NULL, fsWrPerm, &fileRefNum);
+			error = FSOpenResourceFile(&fileRef, fork->length, (UniChar *) &fork->unicode, fsWrPerm, &fileRefNum);
+		else error = FSOpenResourceFile(&fileRef, 0, NULL, fsWrPerm, &fileRefNum);
+
+#pragma clang diagnostic pop
 	}
 //	else NSLog(@"error creating resource fork. (error=%d, spec=%d, ref=%d, parent=%d)", error, fileSpec, fileRef, parentRef);
-	else NSLog(@"error creating resource fork. (error=%d, ref=%p)", error, fileRef);
+	else NSLog(@"error creating resource fork. (error=%d, ref=%p)", error, &fileRef);
 	
 	// write resource array to file
 	if(fileRefNum && !error)
 		succeeded = [self writeResourceMap:fileRefNum];
 	
 	// tidy up loose ends
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+
 	if(fileRefNum) FSCloseFork(fileRefNum);
-	DisposePtr((Ptr) fileRef);
-	
+
+#pragma clang diagnostic pop
+
 	// update info window
 	[[InfoWindowController sharedInfoWindowController] updateInfoWindow];
 	
@@ -385,16 +449,22 @@ extern NSString *RKResourcePboardType;
 {
 	// try and get an FSRef
 	OSStatus error;
-	FSRef *fileRef = [fileName createFSRef], *parentRef = nil;
+	FSRef *fileRef = [fileName createFSRef], parentRef;
 	if(!fileRef)
 	{
-		parentRef = (FSRef *) NewPtrClear(sizeof(FSRef));
-		fileRef   = (FSRef *) NewPtrClear(sizeof(FSRef));
-		unichar *uniname = (unichar *) NewPtrClear(sizeof(unichar) *256);
+		fileRef = malloc(sizeof(FSRef));
+		unichar uniname[sizeof(unichar) * 256];
 		[[fileName lastPathComponent] getCharacters:uniname];
-		error = FSPathMakeRef((const UInt8 *)[[fileName stringByDeletingLastPathComponent] UTF8String], parentRef, nil);
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+
+		error = FSPathMakeRef((const UInt8 *)[[fileName stringByDeletingLastPathComponent] UTF8String], &parentRef, nil);
 		if(error) return NO;
-		error = FSCreateFileUnicode(parentRef, 0, NULL, kFSCatInfoNone, NULL, fileRef, NULL);
+		error = FSCreateFileUnicode(&parentRef, 0, NULL, kFSCatInfoNone, NULL, fileRef, NULL);
+
+#pragma clang diagnostic pop
+
 		if(error || !fileRef) return NO;
 	}
 	
@@ -404,23 +474,35 @@ extern NSString *RKResourcePboardType;
 	{
 		// if the resource object represents an actual resource, skip it
 		if([resource representedFork] == nil) continue;
-		unichar *uniname = (unichar *) NewPtrClear(sizeof(unichar) *256);
+		unichar uniname[sizeof(unichar) * 256];
 		[[resource representedFork] getCharacters:uniname];
 		FSIORefNum forkRefNum = 0;
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+
 		error = FSOpenFork(fileRef, [[resource representedFork] length], (UniChar *) uniname, fsWrPerm, &forkRefNum);
-		
+
 		if (error != noErr)
 			NSLog(@"FSOpenFork got error %d", error);
-		
-		if(!error && forkRefNum)
+
+		if(!error && forkRefNum) {
 			error = FSWriteFork(forkRefNum, fsFromStart, 0, [[resource data] length], [[resource data] bytes], NULL);
-		
-		if (error != noErr)
-			NSLog(@"FSWriteFork got error %d", error);
-		
+
+			if (error != noErr) {
+				NSLog(@"FSWriteFork got error %d", error);
+				NSLog(@"forkRefNum = %d", forkRefNum);
+				NSError *nserror = [NSError errorWithDomain:NSOSStatusErrorDomain code:error userInfo:nil];
+				NSLog(@"%@", nserror.description);
+			}
+		}
+
 		if(forkRefNum) FSCloseFork(forkRefNum);
+
+#pragma clang diagnostic pop
+
 	}
-	DisposePtr((Ptr) fileRef);
+	free(fileRef);
 	return YES;
 }
 
@@ -433,9 +515,14 @@ extern NSString *RKResourcePboardType;
 {
 	// make the resource file current
 	OSStatus error = noErr;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+
 	ResFileRefNum oldResFile = CurResFile();
 	UseResFile(fileRefNum);
-	
+
+#pragma clang diagnostic pop
+
 	// loop over all our resources
 	Resource *resource;
 	NSEnumerator *enumerator = [resources objectEnumerator];
@@ -455,17 +542,26 @@ extern NSString *RKResourcePboardType;
 		sizeLong = [[resource data] length];
 		resIDShort	= [[resource resID] shortValue];
 		attrsShort	= [[resource attributes] shortValue];
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+
 		resourceHandle = NewHandleClear(sizeLong);
-		
+
+#pragma clang diagnostic pop
+
 		// convert unicode name to pascal string
 		nameStr[0] = (unsigned char)[[resource name] lengthOfBytesUsingEncoding:NSMacOSRomanStringEncoding];
 		memmove(&nameStr[1], [[resource name] cStringUsingEncoding:NSMacOSRomanStringEncoding], nameStr[0]);
 		
 		// convert type string to ResType
-		[[resource type] getCString:resTypeStr maxLength:4 encoding:NSMacOSRomanStringEncoding];
+		[[resource type] getCString:resTypeStr maxLength:5 encoding:NSMacOSRomanStringEncoding];
 		resTypeCode = CFSwapInt32HostToBig(*(ResType *)resTypeStr);
-		
+
 		// convert NSData to resource handle
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+
 		HLockHi(resourceHandle);
 		[[resource data] getBytes:*resourceHandle];
 #if __LITTLE_ENDIAN__
@@ -495,11 +591,16 @@ extern NSString *RKResourcePboardType;
 	
 	// restore original resource file
 	UseResFile(oldResFile);
+#pragma clang diagnostic pop
+
 	return error? NO:YES;
 }
 
 - (void)setTypeCreatorAfterSave:(id)userInfo
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+
 	FSRef *fileRef = (FSRef *) NewPtrClear(sizeof(FSRef));
 	OSStatus error = FSPathMakeRef((const UInt8 *)[[[self fileURL] path] UTF8String], fileRef, nil);
 	if(!error)
@@ -518,6 +619,9 @@ extern NSString *RKResourcePboardType;
 		else NSLog(@"error getting Finder info. (error=%d, ref=%p)", error, fileRef);
 	}
 	else NSLog(@"error making fsref from file path. (error=%d, ref=%p, path=%@)", error, fileRef, [[self fileURL] path]);
+
+#pragma clang diagnostic pop
+
 }
 
 #pragma mark -
@@ -586,7 +690,7 @@ extern NSString *RKResourcePboardType;
 	}];
 }
 
-- (void)exportPanelDidEnd:(NSSavePanel *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo
+- (void)exportPanelDidEnd:(NSSavePanel *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
 {
 	NSData *data = (NSData *) contextInfo;
 	[data autorelease];
@@ -876,7 +980,7 @@ static NSString *RKViewItemIdentifier		= @"com.nickshanks.resknife.toolbar.view"
 - (BOOL)validateToolbarItem:(NSToolbarItem *)item
 {
 	BOOL valid = NO;
-	int selectedRows = [outlineView numberOfSelectedRows];
+	NSInteger selectedRows = [outlineView numberOfSelectedRows];
 	NSString *identifier = [item itemIdentifier];
 	
 	if([identifier isEqualToString:RKCreateItemIdentifier])				valid = YES;
@@ -1310,7 +1414,7 @@ static NSString *RKViewItemIdentifier		= @"com.nickshanks.resknife.toolbar.view"
 
 - (IBAction)creatorChanged:(id)sender
 {
-	unsigned long newCreator = 0x00;	// creator is nil by default
+	uint32_t newCreator = 0x00;	// creator is nil by default
 	NSData *creatorData = [[sender stringValue] dataUsingEncoding:NSMacOSRomanStringEncoding];
 //	NSLog(@"creatorChanged: [sender stringValue] = '%@'; creatorData = '%@'", [sender stringValue], creatorData);
 	if(creatorData && [creatorData length] > 0)
@@ -1327,7 +1431,7 @@ static NSString *RKViewItemIdentifier		= @"com.nickshanks.resknife.toolbar.view"
 
 - (IBAction)typeChanged:(id)sender
 {
-	unsigned long newType = 0x00;
+	uint32_t newType = 0x00;
 	NSData *typeData = [[sender stringValue] dataUsingEncoding:NSMacOSRomanStringEncoding];
 //	NSLog(@"typeChanged: [sender stringValue] = '%@'; typeData = '%@'", [sender stringValue], typeData);
 	if(typeData && [typeData length] > 0)

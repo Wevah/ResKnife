@@ -133,30 +133,40 @@
 @implementation NSString (NGSFSSpecExtensions)
 - (FSRef *)createFSRef
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+
 	// caller is responsible for disposing of the FSRef (method is a 'create' method)
-	FSRef *fsRef = (FSRef *) NewPtrClear(sizeof(FSRef));
+	FSRef *fsRef = (FSRef *) malloc(sizeof(FSRef));
 	OSStatus error = FSPathMakeRef((const UInt8 *)[self fileSystemRepresentation], fsRef, NULL);
 	if(error != noErr) fsRef = NULL;
 	return fsRef;
+
+#pragma clang diagnostic pop
 }
+
 - (FSSpec *)createFSSpec
 {
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+
 	// caller is responsible for disposing of the FSSpec (method is a 'create' method)
-	FSRef *fsRef = (FSRef *) NewPtrClear(sizeof(FSRef));
-	FSSpec *fsSpec = (FSSpec *) NewPtrClear(sizeof(FSSpec));
-	OSStatus error = FSPathMakeRef((const UInt8 *)[self fileSystemRepresentation], fsRef, NULL);
+	FSRef fsRef;
+	FSSpec *fsSpec = malloc(sizeof(FSSpec));
+	OSStatus error = FSPathMakeRef((const UInt8 *)[self fileSystemRepresentation], &fsRef, NULL);
 	if(error == noErr)
 	{
-		error = FSGetCatalogInfo(fsRef, kFSCatInfoNone, NULL, NULL, fsSpec, NULL);
+		error = FSGetCatalogInfo(&fsRef, kFSCatInfoNone, NULL, NULL, fsSpec, NULL);
 		if(error == noErr)
 		{
-			DisposePtr((Ptr)fsRef);
 			return fsSpec;
 		}
 	}
-	DisposePtr((Ptr)fsRef);
-	DisposePtr((Ptr)fsSpec);
+	free(fsSpec);
 	return NULL;
+
+#pragma clang diagnostic pop
 }
 @end
 

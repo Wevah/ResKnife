@@ -60,17 +60,23 @@
 		if([[tableColumn identifier] isEqualToString:@"forkname"])
 		{
 			NSString *forkName = nil;
-			HFSUniStr255 *resourceForkName = (HFSUniStr255 *) NewPtrClear(sizeof(HFSUniStr255));
-			OSErr error = FSGetResourceForkName(resourceForkName);
+			HFSUniStr255 resourceForkName;
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+
+			OSErr error = FSGetResourceForkName(&resourceForkName);
+
+#pragma clang diagnostic pop
+
 			forkName = [(NSDictionary *)[forks objectAtIndex:row] objectForKey:[tableColumn identifier]];
 			
 			// return custom names for data and resource forks
 			if([forkName isEqualToString:@""])
 				forkName = NSLocalizedString(@"Data Fork", nil);
-			else if(!error && [forkName isEqualToString:[NSString stringWithCharacters:resourceForkName->unicode length:resourceForkName->length]])
+			else if(!error && [forkName isEqualToString:[NSString stringWithCharacters:resourceForkName.unicode length:resourceForkName.length]])
 				forkName = NSLocalizedString(@"Resource Fork", nil);
 			
-			DisposePtr((Ptr) resourceForkName);
 			return forkName;
 		}
 		
