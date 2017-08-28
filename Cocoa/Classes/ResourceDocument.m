@@ -693,7 +693,6 @@ extern NSString *RKResourcePboardType;
 - (void)exportPanelDidEnd:(NSSavePanel *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
 {
 	NSData *data = (NSData *) contextInfo;
-	[data autorelease];
 	
 	if(returnCode == NSOKButton)
 		[data writeToURL:[sheet URL] atomically:YES];
