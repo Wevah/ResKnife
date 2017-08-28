@@ -691,7 +691,7 @@ extern NSString *RKResourcePboardType;
 	[dataSource setResources:resources];
 }
 
-- (void)printShowingPrintPanel:(BOOL)flag
+- (void)printDocumentWithSettings:(NSDictionary<NSPrintInfoAttributeKey,id> *)printSettings showPrintPanel:(BOOL)showPrintPanel delegate:(id)delegate didPrintSelector:(SEL)didPrintSelector contextInfo:(void *)contextInfo
 {
 	NSPrintOperation *printOperation = [NSPrintOperation printOperationWithView:[mainWindow contentView]];
 	[printOperation runOperationModalForWindow:mainWindow delegate:self didRunSelector:@selector(printOperationDidRun:success:contextInfo:) contextInfo:nil];
