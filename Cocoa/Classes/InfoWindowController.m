@@ -5,6 +5,7 @@
 #import "ApplicationDelegate.h"
 #import "NSOutlineView-SelectedItems.h"
 //#import "MoreFilesX.h"
+#import <AssertMacros.h> // for require_noerr, etc
 
 @implementation InfoWindowController
 
