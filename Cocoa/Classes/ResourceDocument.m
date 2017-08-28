@@ -709,7 +709,7 @@ extern NSString *RKResourcePboardType;
 
 - (BOOL)validateMenuItem:(NSMenuItem *)item
 {
-	int selectedRows = [outlineView numberOfSelectedRows];
+	NSInteger selectedRows = [outlineView numberOfSelectedRows];
 	Resource *resource = (Resource *) [outlineView selectedItem];
 	
 	// file menu
