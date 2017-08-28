@@ -8,9 +8,7 @@ NSString *RKResourcePboardType = @"RKResourcePboardType";
 
 - (id)init
 {
-	self = [super init];
-	[self initWithType:@"NULL" andID:[NSNumber numberWithShort:128]];
-	return self;
+	return [self initWithType:@"NULL" andID:[NSNumber numberWithShort:128]];
 }
 
 - (id)initWithType:(NSString *)typeValue andID:(NSNumber *)resIDValue
@@ -33,27 +31,27 @@ NSString *RKResourcePboardType = @"RKResourcePboardType";
 	type = [typeValue copy];
 	resID = [resIDValue copy];
 	attributes = [attributesValue copy];
-	data = [dataValue retain];
+	data = dataValue;
 	return self;
 }
 
 
 + (id)resourceOfType:(NSString *)typeValue andID:(NSNumber *)resIDValue
 {
-	Resource *resource = [[Resource allocWithZone:[self zone]] initWithType:typeValue andID:resIDValue];
-	return [resource autorelease];
+	Resource *resource = [[Resource alloc] initWithType:typeValue andID:resIDValue];
+	return resource;
 }
 
 + (id)resourceOfType:(NSString *)typeValue andID:(NSNumber *)resIDValue withName:(NSString *)nameValue andAttributes:(NSNumber *)attributesValue
 {
-	Resource *resource = [[Resource allocWithZone:[self zone]] initWithType:typeValue andID:resIDValue withName:nameValue andAttributes:attributesValue];
-	return [resource autorelease];
+	Resource *resource = [[Resource alloc] initWithType:typeValue andID:resIDValue withName:nameValue andAttributes:attributesValue];
+	return resource;
 }
 
 + (id)resourceOfType:(NSString *)typeValue andID:(NSNumber *)resIDValue withName:(NSString *)nameValue andAttributes:(NSNumber *)attributesValue data:(NSData *)dataValue
 {
-	Resource *resource = [[Resource allocWithZone:[self zone]] initWithType:typeValue andID:resIDValue withName:nameValue andAttributes:attributesValue data:dataValue];
-	return [resource autorelease];
+	Resource *resource = [[Resource alloc] initWithType:typeValue andID:resIDValue withName:nameValue andAttributes:attributesValue data:dataValue];
+	return resource;
 }
 
 + (Resource *)getResourceOfType:(NSString *)typeValue andID:(NSNumber *)resIDValue inDocument:(NSDocument *)searchDoc
@@ -128,21 +126,9 @@ NSString *RKResourcePboardType = @"RKResourcePboardType";
 	return nil;
 }
 
-- (void)dealloc
-{
-	[representedFork release];
-	[name release];
-	[type release];
-	[resID release];
-	[attributes release];
-	[data release];
-	[_docName release];
-	[super dealloc];
-}
-
 - (id)copyWithZone:(NSZone *)zone
 {
-	Resource *copy = [[Resource alloc] initWithType:type andID:resID withName:name andAttributes:attributes data:[[data copy] autorelease]];
+	Resource *copy = [[Resource alloc] initWithType:type andID:resID withName:name andAttributes:attributes data:[data copy]];
 	[copy setDocumentName:_docName];
 	return copy;
 }
@@ -183,7 +169,6 @@ NSString *RKResourcePboardType = @"RKResourcePboardType";
 - (void)setRepresentedFork:(NSString *)forkName
 {
 	if (representedFork != forkName) {
-		[representedFork release];
 		representedFork = [forkName copy];
 	}
 }
@@ -196,9 +181,8 @@ NSString *RKResourcePboardType = @"RKResourcePboardType";
 // shouldn't need this - it's used by forks to give them alternate names - should use name formatter replacement instead
 - (void)_setName:(NSString *)newName
 {
-	id old = name;
-	name = [newName copy];
-	[old release];
+	if (name != newName)
+		name = [newName copy];
 }
 
 - (void)setName:(NSString *)newName
@@ -208,10 +192,8 @@ NSString *RKResourcePboardType = @"RKResourcePboardType";
 		[[NSNotificationCenter defaultCenter] postNotificationName:ResourceWillChangeNotification object:self];
 		[[NSNotificationCenter defaultCenter] postNotificationName:ResourceNameWillChangeNotification object:self];
 		
-		id old = name;
 		name = [newName copy];
-		[old release];
-		
+
 		// bug: this line is causing crashes!
 //		[[NSNotificationCenter defaultCenter] postNotificationName:ResourceNameDidChangeNotification object:self];
 		[self setDirty:YES];
@@ -236,10 +218,8 @@ NSString *RKResourcePboardType = @"RKResourcePboardType";
 		[[NSNotificationCenter defaultCenter] postNotificationName:ResourceWillChangeNotification object:self];
 		[[NSNotificationCenter defaultCenter] postNotificationName:ResourceTypeWillChangeNotification object:self];
 		
-		id old = type;
 		type = [newType copy];
-		[old release];
-		
+
 		// bug: this line is causing crashes!
 //		[[NSNotificationCenter defaultCenter] postNotificationName:ResourceTypeDidChangeNotification object:self];
 		[self setDirty:YES];
@@ -258,10 +238,8 @@ NSString *RKResourcePboardType = @"RKResourcePboardType";
 		[[NSNotificationCenter defaultCenter] postNotificationName:ResourceWillChangeNotification object:self];
 		[[NSNotificationCenter defaultCenter] postNotificationName:ResourceIDWillChangeNotification object:self];
 		
-		id old = resID;
 		resID = [newResID copy];
-		[old release];
-		
+
 		// bug: this line is causing crashes!
 //		[[NSNotificationCenter defaultCenter] postNotificationName:ResourceIDDidChangeNotification object:self];
 		[self setDirty:YES];
@@ -280,9 +258,7 @@ NSString *RKResourcePboardType = @"RKResourcePboardType";
 		[[NSNotificationCenter defaultCenter] postNotificationName:ResourceWillChangeNotification object:self];
 		[[NSNotificationCenter defaultCenter] postNotificationName:ResourceAttributesWillChangeNotification object:self];
 		
-		id old = attributes;
 		attributes = [newAttributes copy];
-		[old release];
 		
 		// bug: this line is causing crashes!
 //		[[NSNotificationCenter defaultCenter] postNotificationName:ResourceAttributesDidChangeNotification object:self];
@@ -308,10 +284,8 @@ NSString *RKResourcePboardType = @"RKResourcePboardType";
 		[[NSNotificationCenter defaultCenter] postNotificationName:ResourceDataWillChangeNotification object:self];
 		
 		// note: this function retains, rather than copies, the supplied data
-		id old = data;
-		data = [newData retain];
-		[old release];
-		
+		data = newData;
+
 		[[NSNotificationCenter defaultCenter] postNotificationName:ResourceDataDidChangeNotification object:self];
 		[self setDirty:YES];
 	}
@@ -325,11 +299,11 @@ NSString *RKResourcePboardType = @"RKResourcePboardType";
 	if(self)
 	{
 		dirty = YES;
-		name = [[decoder decodeObject] retain];
-		type = [[decoder decodeObject] retain];
-		resID = [[decoder decodeObject] retain];
-		attributes = [[decoder decodeObject] retain];
-		data = [[decoder decodeDataObject] retain];
+		name = [decoder decodeObject];
+		type = [decoder decodeObject];
+		resID = [decoder decodeObject];
+		attributes = [decoder decodeObject];
+		data = [decoder decodeDataObject];
 	}
 	return self;
 }

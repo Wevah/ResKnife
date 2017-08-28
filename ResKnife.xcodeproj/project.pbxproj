@@ -14,10 +14,10 @@
 		B22100CD15D3F944009FDEE1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0EF7153F122BD0D0005DF94E /* Localizable.strings */; };
 		B229EECB15A4B8720032C12C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B5884B0156D40B01000001 /* Cocoa.framework */; };
 		B229EED515A4B8720032C12C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B229EED315A4B8720032C12C /* InfoPlist.strings */; };
-		B229EEDB15A4B9420032C12C /* PNGWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B229EEC115A4B7250032C12C /* PNGWindowController.m */; };
+		B229EEDB15A4B9420032C12C /* PNGWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B229EEC115A4B7250032C12C /* PNGWindowController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B229EEDC15A4B9420032C12C /* PNGWindowController.xib in Sources */ = {isa = PBXBuildFile; fileRef = B229EEC215A4B7250032C12C /* PNGWindowController.xib */; };
 		B229EEDD15A4BA900032C12C /* PNG Editor.plugin in Copy Plugins */ = {isa = PBXBuildFile; fileRef = B229EECA15A4B8720032C12C /* PNG Editor.plugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		B229EEDE15A4BABD0032C12C /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9ECCE027F474A01A8010C /* Notifications.m */; };
+		B229EEDE15A4BABD0032C12C /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9ECCE027F474A01A8010C /* Notifications.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B229EEE115A4BB2E0032C12C /* PNGWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = B229EEC015A4B7250032C12C /* PNGWindowController.h */; };
 		B229EEF415A4FB6F0032C12C /* AboutPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = B229EEE815A4FB6F0032C12C /* AboutPanel.xib */; };
 		B229EEF515A4FB6F0032C12C /* Application.xib in Resources */ = {isa = PBXBuildFile; fileRef = B229EEEA15A4FB6F0032C12C /* Application.xib */; };
@@ -39,46 +39,46 @@
 		B2B2C40815A9464400D6F61C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B5884B0156D40B01000001 /* Cocoa.framework */; };
 		B2B2C40E15A9464400D6F61C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B2B2C40C15A9464400D6F61C /* InfoPlist.strings */; };
 		B2B2C41515A9468300D6F61C /* Pattern Editor.plugin in Copy Plugins */ = {isa = PBXBuildFile; fileRef = B2B2C40715A9464400D6F61C /* Pattern Editor.plugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		B2B2C41615A946FB00D6F61C /* PatternWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B2C3FE15A9453300D6F61C /* PatternWindowController.m */; };
+		B2B2C41615A946FB00D6F61C /* PatternWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B2C3FE15A9453300D6F61C /* PatternWindowController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B2B2C41715A9470500D6F61C /* PatternWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2B2C3FF15A9453300D6F61C /* PatternWindowController.xib */; };
-		B2B2C41815A9473C00D6F61C /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9ECCE027F474A01A8010C /* Notifications.m */; };
-		B2B2C42115A9EEEF00D6F61C /* RKPatternImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B2C41E15A9EEE100D6F61C /* RKPatternImageCell.m */; };
-		B2B2C43A15A9FCCF00D6F61C /* RKPatternView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B2C43915A9FCCF00D6F61C /* RKPatternView.m */; };
+		B2B2C41815A9473C00D6F61C /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9ECCE027F474A01A8010C /* Notifications.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B2B2C42115A9EEEF00D6F61C /* RKPatternImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B2C41E15A9EEE100D6F61C /* RKPatternImageCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B2B2C43A15A9FCCF00D6F61C /* RKPatternView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B2C43915A9FCCF00D6F61C /* RKPatternView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B2B3CEAA16B9DCE90027F33F /* ResourceGridView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2B3CEA816B9DCE90027F33F /* ResourceGridView.xib */; };
 		B2B51C9115B700560087978B /* Edit Hex.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F577A8FC0211E4D401A80001 /* Edit Hex.tiff */; };
 		B2FCA78B15A66ACE00696598 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B5884B0156D40B01000001 /* Cocoa.framework */; };
 		B2FCA79115A66ACF00696598 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B2FCA78F15A66ACF00696598 /* InfoPlist.strings */; };
-		B2FCA79715A66B2A00696598 /* PictWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FCA78015A669C800696598 /* PictWindowController.m */; };
+		B2FCA79715A66B2A00696598 /* PictWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FCA78015A669C800696598 /* PictWindowController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B2FCA79815A66B2A00696598 /* SupportedTypes.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2FCA78115A669C800696598 /* SupportedTypes.plist */; };
 		B2FCA79C15A66B5500696598 /* PICT Editor.plugin in Copy Plugins */ = {isa = PBXBuildFile; fileRef = B2FCA78A15A66ACE00696598 /* PICT Editor.plugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		B2FCA79D15A66B7200696598 /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9ECCE027F474A01A8010C /* Notifications.m */; };
+		B2FCA79D15A66B7200696598 /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9ECCE027F474A01A8010C /* Notifications.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B2FCA7A215A6704900696598 /* FontDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2FCA79E15A6704900696598 /* FontDocument.xib */; };
 		B2FCA7A315A6704900696598 /* FontWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2FCA7A015A6704900696598 /* FontWindow.xib */; };
 		E11936660998552900A3A6EA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E11936650998552900A3A6EA /* Localizable.strings */; };
 		E1193683099864AD00A3A6EA /* ElementUBYT.h in Headers */ = {isa = PBXBuildFile; fileRef = E119367D099864AD00A3A6EA /* ElementUBYT.h */; };
-		E1193684099864AD00A3A6EA /* ElementUBYT.m in Sources */ = {isa = PBXBuildFile; fileRef = E119367E099864AD00A3A6EA /* ElementUBYT.m */; };
+		E1193684099864AD00A3A6EA /* ElementUBYT.m in Sources */ = {isa = PBXBuildFile; fileRef = E119367E099864AD00A3A6EA /* ElementUBYT.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E1193685099864AD00A3A6EA /* ElementULNG.h in Headers */ = {isa = PBXBuildFile; fileRef = E119367F099864AD00A3A6EA /* ElementULNG.h */; };
-		E1193686099864AD00A3A6EA /* ElementULNG.m in Sources */ = {isa = PBXBuildFile; fileRef = E1193680099864AD00A3A6EA /* ElementULNG.m */; };
+		E1193686099864AD00A3A6EA /* ElementULNG.m in Sources */ = {isa = PBXBuildFile; fileRef = E1193680099864AD00A3A6EA /* ElementULNG.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E1193687099864AD00A3A6EA /* ElementUWRD.h in Headers */ = {isa = PBXBuildFile; fileRef = E1193681099864AD00A3A6EA /* ElementUWRD.h */; };
-		E1193688099864AD00A3A6EA /* ElementUWRD.m in Sources */ = {isa = PBXBuildFile; fileRef = E1193682099864AD00A3A6EA /* ElementUWRD.m */; };
+		E1193688099864AD00A3A6EA /* ElementUWRD.m in Sources */ = {isa = PBXBuildFile; fileRef = E1193682099864AD00A3A6EA /* ElementUWRD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E119371B09986D8300A3A6EA /* ElementFIXD.h in Headers */ = {isa = PBXBuildFile; fileRef = E119371909986D8200A3A6EA /* ElementFIXD.h */; };
-		E119371C09986D8300A3A6EA /* ElementFIXD.m in Sources */ = {isa = PBXBuildFile; fileRef = E119371A09986D8200A3A6EA /* ElementFIXD.m */; };
+		E119371C09986D8300A3A6EA /* ElementFIXD.m in Sources */ = {isa = PBXBuildFile; fileRef = E119371A09986D8200A3A6EA /* ElementFIXD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E119376E0998768600A3A6EA /* ElementFRAC.h in Headers */ = {isa = PBXBuildFile; fileRef = E119376C0998768500A3A6EA /* ElementFRAC.h */; };
-		E119376F0998768600A3A6EA /* ElementFRAC.m in Sources */ = {isa = PBXBuildFile; fileRef = E119376D0998768500A3A6EA /* ElementFRAC.m */; };
+		E119376F0998768600A3A6EA /* ElementFRAC.m in Sources */ = {isa = PBXBuildFile; fileRef = E119376D0998768500A3A6EA /* ElementFRAC.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E119379309987CC400A3A6EA /* ElementULLG.h in Headers */ = {isa = PBXBuildFile; fileRef = E119379109987CC400A3A6EA /* ElementULLG.h */; };
-		E119379409987CC400A3A6EA /* ElementULLG.m in Sources */ = {isa = PBXBuildFile; fileRef = E119379209987CC400A3A6EA /* ElementULLG.m */; };
+		E119379409987CC400A3A6EA /* ElementULLG.m in Sources */ = {isa = PBXBuildFile; fileRef = E119379209987CC400A3A6EA /* ElementULLG.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E119386509991DDD00A3A6EA /* Templates.rsrc in Copy Support Resources */ = {isa = PBXBuildFile; fileRef = E119383D09991C5100A3A6EA /* Templates.rsrc */; };
 		E119388D0999296B00A3A6EA /* ElementHEXD.h in Headers */ = {isa = PBXBuildFile; fileRef = E119388B0999296B00A3A6EA /* ElementHEXD.h */; };
-		E119388E0999296B00A3A6EA /* ElementHEXD.m in Sources */ = {isa = PBXBuildFile; fileRef = E119388C0999296B00A3A6EA /* ElementHEXD.m */; };
+		E119388E0999296B00A3A6EA /* ElementHEXD.m in Sources */ = {isa = PBXBuildFile; fileRef = E119388C0999296B00A3A6EA /* ElementHEXD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E1193949099940FD00A3A6EA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1193947099940FD00A3A6EA /* InfoPlist.strings */; };
 		E13F837F08F13A4C00E2A5CB /* Font Editor.plugin in Copy Plugins */ = {isa = PBXBuildFile; fileRef = E18BF78B069FF23700F076B8 /* Font Editor.plugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		E14AC2760996BF1700D293E5 /* ElementDLLG.h in Headers */ = {isa = PBXBuildFile; fileRef = E14AC2740996BF1700D293E5 /* ElementDLLG.h */; };
-		E14AC2770996BF1700D293E5 /* ElementDLLG.m in Sources */ = {isa = PBXBuildFile; fileRef = E14AC2750996BF1700D293E5 /* ElementDLLG.m */; };
+		E14AC2770996BF1700D293E5 /* ElementDLLG.m in Sources */ = {isa = PBXBuildFile; fileRef = E14AC2750996BF1700D293E5 /* ElementDLLG.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E14AC453099702F400D293E5 /* ElementFBYT.h in Headers */ = {isa = PBXBuildFile; fileRef = E14AC451099702F300D293E5 /* ElementFBYT.h */; };
-		E14AC454099702F400D293E5 /* ElementFBYT.m in Sources */ = {isa = PBXBuildFile; fileRef = E14AC452099702F400D293E5 /* ElementFBYT.m */; };
+		E14AC454099702F400D293E5 /* ElementFBYT.m in Sources */ = {isa = PBXBuildFile; fileRef = E14AC452099702F400D293E5 /* ElementFBYT.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E15CFD6E099995D1004929B6 /* Templates for sfnt tables.rsrc in Copy Support Resources */ = {isa = PBXBuildFile; fileRef = E15CFD6D099995D1004929B6 /* Templates for sfnt tables.rsrc */; };
 		E15CFF82099BECAF004929B6 /* ElementDATE.h in Headers */ = {isa = PBXBuildFile; fileRef = E15CFF80099BECAE004929B6 /* ElementDATE.h */; };
-		E15CFF83099BECAF004929B6 /* ElementDATE.m in Sources */ = {isa = PBXBuildFile; fileRef = E15CFF81099BECAF004929B6 /* ElementDATE.m */; };
+		E15CFF83099BECAF004929B6 /* ElementDATE.m in Sources */ = {isa = PBXBuildFile; fileRef = E15CFF81099BECAF004929B6 /* ElementDATE.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E18BF53D069FEA1300F076B8 /* ResKnifeResourceProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = F5CDEBAB01FC893201A80001 /* ResKnifeResourceProtocol.h */; };
 		E18BF53E069FEA1300F076B8 /* ResKnifePluginProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = F5502C4001C579FF01C57124 /* ResKnifePluginProtocol.h */; };
 		E18BF53F069FEA1300F076B8 /* ApplicationDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = F5B5881D0156D40B01000001 /* ApplicationDelegate.h */; };
@@ -145,12 +145,12 @@
 		E18BF594069FEA1400F076B8 /* HexWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = F5EF83A7020C08E601A80001 /* HexWindowController.h */; };
 		E18BF595069FEA1400F076B8 /* FindSheetController.h in Headers */ = {isa = PBXBuildFile; fileRef = F54E6220021B6A0801A80001 /* FindSheetController.h */; };
 		E18BF596069FEA1400F076B8 /* NSData-HexRepresentation.h in Headers */ = {isa = PBXBuildFile; fileRef = E1C5E08B055D98790001A04A /* NSData-HexRepresentation.h */; };
-		E18BF59B069FEA1400F076B8 /* HexEditorDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EF83A1020C08E601A80001 /* HexEditorDelegate.m */; };
-		E18BF59C069FEA1400F076B8 /* HexTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EF83A3020C08E601A80001 /* HexTextView.m */; };
-		E18BF59D069FEA1400F076B8 /* HexWindowController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F5EF83A8020C08E601A80001 /* HexWindowController.mm */; };
-		E18BF59E069FEA1400F076B8 /* FindSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54E6221021B6A0801A80001 /* FindSheetController.m */; };
-		E18BF59F069FEA1400F076B8 /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9ECCE027F474A01A8010C /* Notifications.m */; };
-		E18BF5A0069FEA1400F076B8 /* NSData-HexRepresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C5E08F055D98D50001A04A /* NSData-HexRepresentation.m */; };
+		E18BF59B069FEA1400F076B8 /* HexEditorDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EF83A1020C08E601A80001 /* HexEditorDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E18BF59C069FEA1400F076B8 /* HexTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EF83A3020C08E601A80001 /* HexTextView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E18BF59D069FEA1400F076B8 /* HexWindowController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F5EF83A8020C08E601A80001 /* HexWindowController.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E18BF59E069FEA1400F076B8 /* FindSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54E6221021B6A0801A80001 /* FindSheetController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E18BF59F069FEA1400F076B8 /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9ECCE027F474A01A8010C /* Notifications.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E18BF5A0069FEA1400F076B8 /* NSData-HexRepresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C5E08F055D98D50001A04A /* NSData-HexRepresentation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E18BF5A2069FEA1400F076B8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B5884B0156D40B01000001 /* Cocoa.framework */; };
 		E18BF5A9069FEA1400F076B8 /* NGSTemplateWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = F535443E0226752901A80001 /* NGSTemplateWindowController.h */; };
 		E18BF5AA069FEA1400F076B8 /* NGSElement.h in Headers */ = {isa = PBXBuildFile; fileRef = F535444D0226B5F501A80001 /* NGSElement.h */; };
@@ -217,8 +217,8 @@
 		E18BF690069FEA1800F076B8 /* ResKnifePluginProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = F5502C4001C579FF01C57124 /* ResKnifePluginProtocol.h */; };
 		E18BF691069FEA1800F076B8 /* ResKnifeResourceProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = F5CDEBAB01FC893201A80001 /* ResKnifeResourceProtocol.h */; };
 		E18BF692069FEA1800F076B8 /* ICONWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D3B99B904DC16A30056861E /* ICONWindowController.h */; };
-		E18BF696069FEA1800F076B8 /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9ECCE027F474A01A8010C /* Notifications.m */; };
-		E18BF697069FEA1800F076B8 /* ICONWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3B99B804DC16A30056861E /* ICONWindowController.m */; };
+		E18BF696069FEA1800F076B8 /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9ECCE027F474A01A8010C /* Notifications.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E18BF697069FEA1800F076B8 /* ICONWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3B99B804DC16A30056861E /* ICONWindowController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E18BF699069FEA1800F076B8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B5884B0156D40B01000001 /* Cocoa.framework */; };
 		E18BF6A0069FEA1800F076B8 /* TemplateWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D0B38B204DEF41E005AED5E /* TemplateWindowController.h */; };
 		E18BF6A1069FEA1800F076B8 /* ResKnifePluginProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = F5502C4001C579FF01C57124 /* ResKnifePluginProtocol.h */; };
@@ -233,28 +233,28 @@
 		E18BF6AC069FEA1800F076B8 /* ElementDBYT.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D4737B804E873F300AF65FE /* ElementDBYT.h */; };
 		E18BF6AD069FEA1800F076B8 /* ElementOCNT.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D50046F04EF040900F3B64D /* ElementOCNT.h */; };
 		E18BF6AE069FEA1800F076B8 /* ElementLSTC.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D50047404EF122000F3B64D /* ElementLSTC.h */; };
-		E18BF6B4069FEA1800F076B8 /* TemplateWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0B38B304DEF41E005AED5E /* TemplateWindowController.m */; };
-		E18BF6B5069FEA1800F076B8 /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9ECCE027F474A01A8010C /* Notifications.m */; };
-		E18BF6B6069FEA1800F076B8 /* Element.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0933A704DEFEE600DD74B1 /* Element.m */; };
-		E18BF6B8069FEA1800F076B8 /* TemplateStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0933BF04DF151C00DD74B1 /* TemplateStream.m */; };
-		E18BF6B9069FEA1800F076B8 /* ElementLSTB.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D0933C504DF1C0800DD74B1 /* ElementLSTB.mm */; };
-		E18BF6BB069FEA1800F076B8 /* ElementPSTR.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0933E804DF317D00DD74B1 /* ElementPSTR.m */; };
-		E18BF6BC069FEA1800F076B8 /* ElementDWRD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0933EE04DF381900DD74B1 /* ElementDWRD.m */; };
-		E18BF6BD069FEA1800F076B8 /* ElementLSTE.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0933F704DFE80500DD74B1 /* ElementLSTE.m */; };
-		E18BF6BE069FEA1800F076B8 /* ElementDLNG.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D4737B304E872DB00AF65FE /* ElementDLNG.m */; };
-		E18BF6BF069FEA1800F076B8 /* ElementDBYT.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D4737B704E873F300AF65FE /* ElementDBYT.m */; };
-		E18BF6C0069FEA1800F076B8 /* ElementOCNT.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D50047004EF040900F3B64D /* ElementOCNT.m */; };
-		E18BF6C1069FEA1800F076B8 /* ElementLSTC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D50047304EF122000F3B64D /* ElementLSTC.mm */; };
+		E18BF6B4069FEA1800F076B8 /* TemplateWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0B38B304DEF41E005AED5E /* TemplateWindowController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E18BF6B5069FEA1800F076B8 /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9ECCE027F474A01A8010C /* Notifications.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E18BF6B6069FEA1800F076B8 /* Element.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0933A704DEFEE600DD74B1 /* Element.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E18BF6B8069FEA1800F076B8 /* TemplateStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0933BF04DF151C00DD74B1 /* TemplateStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E18BF6B9069FEA1800F076B8 /* ElementLSTB.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D0933C504DF1C0800DD74B1 /* ElementLSTB.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E18BF6BB069FEA1800F076B8 /* ElementPSTR.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0933E804DF317D00DD74B1 /* ElementPSTR.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E18BF6BC069FEA1800F076B8 /* ElementDWRD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0933EE04DF381900DD74B1 /* ElementDWRD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E18BF6BD069FEA1800F076B8 /* ElementLSTE.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0933F704DFE80500DD74B1 /* ElementLSTE.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E18BF6BE069FEA1800F076B8 /* ElementDLNG.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D4737B304E872DB00AF65FE /* ElementDLNG.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E18BF6BF069FEA1800F076B8 /* ElementDBYT.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D4737B704E873F300AF65FE /* ElementDBYT.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E18BF6C0069FEA1800F076B8 /* ElementOCNT.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D50047004EF040900F3B64D /* ElementOCNT.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E18BF6C1069FEA1800F076B8 /* ElementLSTC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D50047304EF122000F3B64D /* ElementLSTC.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E18BF6C3069FEA1800F076B8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B5884B0156D40B01000001 /* Cocoa.framework */; };
 		E18BF7D4069FFC7600F076B8 /* FontWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = E18BF7D1069FFC7600F076B8 /* FontWindowController.h */; };
-		E18BF7D5069FFC7600F076B8 /* FontWindowController.mm in Sources */ = {isa = PBXBuildFile; fileRef = E18BF7D2069FFC7600F076B8 /* FontWindowController.mm */; };
+		E18BF7D5069FFC7600F076B8 /* FontWindowController.mm in Sources */ = {isa = PBXBuildFile; fileRef = E18BF7D2069FFC7600F076B8 /* FontWindowController.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E18BF8D006A0016B00F076B8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B5884B0156D40B01000001 /* Cocoa.framework */; };
 		E18BF8D206A0016D00F076B8 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B5884A0156D40B01000001 /* Carbon.framework */; };
-		E18BF8EB06A0027700F076B8 /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9ECCE027F474A01A8010C /* Notifications.m */; };
+		E18BF8EB06A0027700F076B8 /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9ECCE027F474A01A8010C /* Notifications.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E18BFA3706A20B7A00F076B8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E18BFA3606A20B7A00F076B8 /* Info.plist */; };
 		E1A984FE099C309400A70612 /* DisplayTMPL.png in Resources */ = {isa = PBXBuildFile; fileRef = E1A984FD099C309300A70612 /* DisplayTMPL.png */; };
 		E1D0DB520A109A4F0011739C /* ElementKEYB.h in Headers */ = {isa = PBXBuildFile; fileRef = E1D0DB4E0A109A4E0011739C /* ElementKEYB.h */; };
-		E1D0DB530A109A4F0011739C /* ElementKEYB.mm in Sources */ = {isa = PBXBuildFile; fileRef = E1D0DB4F0A109A4E0011739C /* ElementKEYB.mm */; };
+		E1D0DB530A109A4F0011739C /* ElementKEYB.mm in Sources */ = {isa = PBXBuildFile; fileRef = E1D0DB4F0A109A4E0011739C /* ElementKEYB.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E1EAB19A06A20F1A0041EE35 /* Hexadecimal Editor.plugin in Copy Plugins */ = {isa = PBXBuildFile; fileRef = E18BF5A6069FEA1400F076B8 /* Hexadecimal Editor.plugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		E1F0B65B06AD62B1007D3469 /* Template Editor.plugin in Copy Plugins */ = {isa = PBXBuildFile; fileRef = E18BF6C8069FEA1900F076B8 /* Template Editor.plugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -2393,6 +2393,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2424,6 +2425,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -2537,6 +2539,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2567,6 +2570,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -2590,6 +2594,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2620,6 +2625,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -2642,6 +2648,7 @@
 		E13F7ED208F0411100E2A5CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2676,6 +2683,7 @@
 		E13F7ED308F0411100E2A5CB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUGGING_SYMBOLS = NO;
@@ -2708,11 +2716,12 @@
 		E13F7ED608F0411100E2A5CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = M72QZ9W58G;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -2738,12 +2747,13 @@
 		E13F7ED708F0411100E2A5CB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUGGING_SYMBOLS = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = M72QZ9W58G;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				INFOPLIST_FILE = "Cocoa/Plug-Ins/Template Editor/Info.plist";
 				OTHER_CFLAGS = "";
@@ -2766,6 +2776,7 @@
 		E13F7EDA08F0411100E2A5CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2795,6 +2806,7 @@
 		E13F7EDB08F0411100E2A5CB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2870,6 +2882,7 @@
 		E13F7EE208F0411100E2A5CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -2896,6 +2909,7 @@
 		E13F7EE308F0411100E2A5CB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUGGING_SYMBOLS = NO;
@@ -2920,6 +2934,7 @@
 		E13F7EE608F0411100E2A5CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -2953,6 +2968,7 @@
 		E13F7EE708F0411100E2A5CB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUGGING_SYMBOLS = NO;

@@ -27,7 +27,6 @@
 
 - (IBAction)exportResources:(id)sender;
 - (void)exportResource:(Resource *)resource;
-- (void)exportPanelDidEnd:(NSSavePanel *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
 
 - (void)setupToolbar:(NSWindowController *)windowController;
 
@@ -40,12 +39,10 @@
 - (id <ResKnifePluginProtocol>)openResource:(Resource *)resource usingTemplate:(NSString *)templateName;
 - (id <ResKnifePluginProtocol>)openResourceAsHex:(Resource *)resource;
 - (IBAction)playSound:(id)sender;
-- (void)sound:(NSSound *)sound didFinishPlaying:(BOOL)finished;
 
 - (IBAction)copy:(id)sender;
 - (IBAction)paste:(id)sender;
 - (void)pasteResources:(NSArray *)pastedResources;
-- (void)overwritePasteSheetDidDismiss:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo;
 - (IBAction)clear:(id)sender;
 - (void)deleteResourcesSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo;
 - (void)deleteSelectedResources;

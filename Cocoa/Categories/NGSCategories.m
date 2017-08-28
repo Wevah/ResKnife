@@ -252,7 +252,7 @@
 		[NSColor colorWithCalibratedWhite: 0.83 alpha: 1.0], 0.5,
 		[NSColor colorWithCalibratedWhite: 0.95 alpha: 1.0], 0.5,
 		[NSColor colorWithCalibratedWhite: 0.92 alpha: 1.0], 1.0, nil];
-	return [gradient autorelease];
+	return gradient;
 }
 + (NSGradient *)aquaGradientWithAlpha:(CGFloat)alpha
 {
@@ -261,7 +261,7 @@
 		[NSColor colorWithCalibratedWhite: 0.83 alpha: alpha], 0.5,
 		[NSColor colorWithCalibratedWhite: 0.95 alpha: alpha], 0.5,
 		[NSColor colorWithCalibratedWhite: 0.92 alpha: alpha], 1.0, nil];
-	return [gradient autorelease];
+	return gradient;
 }
 - (NSGradient *)gradientWithAlpha:(CGFloat)alpha
 {
@@ -277,7 +277,7 @@
 	NSGradient *gradient = [[NSGradient alloc] initWithColors: colours atLocations: locations colorSpace: [self colorSpace]];
 
 	free(locations);
-	return [gradient autorelease];
+	return gradient;
 }
 @end
 
