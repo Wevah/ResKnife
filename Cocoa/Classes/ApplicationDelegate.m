@@ -81,7 +81,7 @@
 	
 	// check we have a file, not a folder
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 	OSErr error = FSGetCatalogInfo(fileRef, whichInfo, &catalogInfo, NULL, NULL, NULL);
 #pragma clang diagnostic pop
 	if(!error && !(catalogInfo.nodeFlags & kFSNodeIsDirectoryMask))
@@ -93,7 +93,7 @@
 			SInt64 forkSize;
 			UInt64 forkPhysicalSize;	// used if opening selected fork fails to find empty forks
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 			error = FSIterateForks(fileRef, &forkIterator, &forkName, &forkSize, &forkPhysicalSize);
 #pragma clang diagnostic pop
 			if(!error)

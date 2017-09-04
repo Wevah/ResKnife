@@ -7,7 +7,7 @@
 	// caller is responsible for disposing of the FSRef (method is a 'create' method)
 	FSRef *fsRef = (FSRef *) malloc(sizeof(FSRef));
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 	OSStatus error = FSPathMakeRef((unsigned char *)[self fileSystemRepresentation], fsRef, NULL);
 #pragma clang diagnostic pop
 	if(error == noErr)
@@ -23,13 +23,13 @@
 	FSRef fsRef;
 	FSSpec *fsSpec = (FSSpec *) malloc(sizeof(FSSpec));
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 	OSStatus error = FSPathMakeRef((unsigned char *)[self fileSystemRepresentation], &fsRef, NULL);
 #pragma clang diagnostic pop
 	if(error == noErr)
 	{
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 		error = FSGetCatalogInfo(&fsRef, kFSCatInfoNone, NULL, NULL, fsSpec, NULL);
 #pragma clang diagnostic pop
 		if(error == noErr)

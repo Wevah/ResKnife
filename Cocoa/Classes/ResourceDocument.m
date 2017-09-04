@@ -68,7 +68,7 @@ extern NSString *RKResourcePboardType;
 	
 	// bug: need to handle error better here
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 	if(!CFURLGetFSRef((__bridge CFURLRef)url, &fileRef)) return NO;
 #pragma clang diagnostic pop
 
@@ -80,7 +80,7 @@ extern NSString *RKResourcePboardType;
 		// bug:	unimplemented - always tells app to try resource fork first
 		fork = (HFSUniStr255 *) malloc(sizeof(HFSUniStr255));
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 		error = FSGetResourceForkName(fork);
 #pragma clang diagnostic pop
 
@@ -105,7 +105,7 @@ extern NSString *RKResourcePboardType;
 	
 	// attempt to open fork user selected as a resource map
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 	SetResLoad(false);		// don't load "preload" resources
 	error = FSOpenResourceFile(&fileRef, fork->length, (UniChar *) &fork->unicode, fsRdPerm, &fileRefNum);
 #pragma clang diagnostic pop
@@ -114,7 +114,7 @@ extern NSString *RKResourcePboardType;
 	{
 		// if opening the user-selected fork fails, try to open resource fork instead
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 		error = FSGetResourceForkName(fork);
 #pragma clang diagnostic pop
 		if(error) return NO;
@@ -132,7 +132,7 @@ extern NSString *RKResourcePboardType;
 		if(checkFork)
 */
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 		error = FSOpenResourceFile(&fileRef, fork->length, (UniChar *) &fork->unicode, fsRdPerm, &fileRefNum);
 #pragma clang diagnostic pop
 
@@ -140,7 +140,7 @@ extern NSString *RKResourcePboardType;
 		{
 			// if opening the resource fork fails, try to open data fork instead
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 			error = FSGetDataForkName(fork);
 			if(error) return NO;
 			error = FSOpenResourceFile(&fileRef, fork->length, (UniChar *) &fork->unicode, fsRdPerm, &fileRefNum);
@@ -153,7 +153,7 @@ extern NSString *RKResourcePboardType;
 				{
 					// data fork is not empty, check resource fork
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 					error = FSGetResourceForkName(fork);
 #pragma clang diagnostic pop
 					if(error) return NO;
@@ -172,7 +172,7 @@ extern NSString *RKResourcePboardType;
 		}
 	}
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 	SetResLoad(true);			// restore resource loading as soon as is possible
 #pragma clang diagnostic pop
 	
@@ -187,7 +187,7 @@ extern NSString *RKResourcePboardType;
 		// get creator and type
 		FSCatalogInfo info;
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 		error = FSGetCatalogInfo(&fileRef, kFSCatInfoFinderInfo, &info, NULL, NULL, NULL);
 #pragma clang diagnostic pop
 		if(!error)
@@ -214,7 +214,7 @@ extern NSString *RKResourcePboardType;
 	
 	// tidy up loose ends
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 	if(fileRefNum) FSCloseFork(fileRefNum);
 #pragma clang diagnostic pop
 
@@ -256,7 +256,7 @@ extern NSString *RKResourcePboardType;
 	// read fork contents into buffer, bug: assumes no errors
 	FSIORefNum forkRefNum;
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 	FSOpenFork(fileRef, uniForkName.length, uniForkName.unicode, fsRdPerm, &forkRefNum);
 	FSReadFork(forkRefNum, fsFromStart, 0, forkLength, buffer, &forkLength);
 	FSCloseFork(forkRefNum);
@@ -273,7 +273,7 @@ extern NSString *RKResourcePboardType;
 	// customise fork name for default data & resource forks - bug: this should really be in resource data source!!
 	HFSUniStr255 resourceForkName;
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 	OSErr error = FSGetResourceForkName(&resourceForkName);
 #pragma clang diagnostic pop
 
@@ -291,7 +291,7 @@ extern NSString *RKResourcePboardType;
 {
 	OSStatus error = noErr;
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 	ResFileRefNum oldResFile = CurResFile();
 	UseResFile(fileRefNum);
 	
@@ -344,7 +344,7 @@ extern NSString *RKResourcePboardType;
 			if (badSize != 0)
 				NSLog(@"GetResourceSizeOnDisk() reported incorrect size for %@ resource %@ in %@: %li should be %li", resType, resID, [self displayName], badSize, sizeLong);
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 			HUnlock(resourceHandle);
 			ReleaseResource(resourceHandle);
 #pragma clang diagnostic pop
@@ -353,7 +353,7 @@ extern NSString *RKResourcePboardType;
 	
 	// save resource map and clean up
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 	UseResFile(oldResFile);
 #pragma clang diagnostic pop
 	return YES;
@@ -378,7 +378,7 @@ extern NSString *RKResourcePboardType;
 	[newName getCharacters:uniname];
 
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
 	if (!CFURLGetFSRef((__bridge CFURLRef)url.URLByDeletingLastPathComponent, &parentRef))
 		NSLog(@"CFURLGetFSRef failed");
@@ -408,7 +408,7 @@ extern NSString *RKResourcePboardType;
 		
 		// open fork as resource map
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
 		if(fork)
 			error = FSOpenResourceFile(&fileRef, fork->length, (UniChar *) &fork->unicode, fsWrPerm, &fileRefNum);
@@ -425,7 +425,7 @@ extern NSString *RKResourcePboardType;
 	
 	// tidy up loose ends
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
 	if(fileRefNum) FSCloseFork(fileRefNum);
 
@@ -449,7 +449,7 @@ extern NSString *RKResourcePboardType;
 		[[fileName lastPathComponent] getCharacters:uniname];
 
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
 		error = FSPathMakeRef((const UInt8 *)[[fileName stringByDeletingLastPathComponent] UTF8String], &parentRef, nil);
 		if(error) {
@@ -477,7 +477,7 @@ extern NSString *RKResourcePboardType;
 		FSIORefNum forkRefNum = 0;
 
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
 		error = FSOpenFork(fileRef, [[resource representedFork] length], (UniChar *) uniname, fsWrPerm, &forkRefNum);
 
@@ -514,7 +514,7 @@ extern NSString *RKResourcePboardType;
 	// make the resource file current
 	OSStatus error = noErr;
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
 	ResFileRefNum oldResFile = CurResFile();
 	UseResFile(fileRefNum);
@@ -542,7 +542,7 @@ extern NSString *RKResourcePboardType;
 		attrsShort	= [[resource attributes] shortValue];
 
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
 		resourceHandle = NewHandleClear(sizeLong);
 
@@ -558,7 +558,7 @@ extern NSString *RKResourcePboardType;
 
 		// convert NSData to resource handle
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
 		HLockHi(resourceHandle);
 		[[resource data] getBytes:*resourceHandle];
@@ -597,7 +597,7 @@ extern NSString *RKResourcePboardType;
 - (void)setTypeCreatorAfterSave:(id)userInfo
 {
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
 	FSRef *fileRef = (FSRef *) NewPtrClear(sizeof(FSRef));
 	OSStatus error = FSPathMakeRef((const UInt8 *)[[[self fileURL] path] UTF8String], fileRef, nil);

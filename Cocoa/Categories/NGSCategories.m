@@ -134,7 +134,7 @@
 - (FSRef *)createFSRef
 {
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
 	// caller is responsible for disposing of the FSRef (method is a 'create' method)
 	FSRef *fsRef = (FSRef *) malloc(sizeof(FSRef));
@@ -153,7 +153,7 @@
 {
 
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
 	// caller is responsible for disposing of the FSSpec (method is a 'create' method)
 	FSRef fsRef;

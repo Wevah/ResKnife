@@ -57,7 +57,7 @@
 			HFSUniStr255 resourceForkName;
 
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
 			OSErr error = FSGetResourceForkName(&resourceForkName);
 
