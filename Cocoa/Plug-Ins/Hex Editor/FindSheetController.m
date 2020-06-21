@@ -30,7 +30,7 @@
 	if( ![searchSelectionOnlyBox isEnabled] )	[searchSelectionOnlyBox setIntValue:0];
 	
 	// show sheet
-	[NSApp beginSheet:[self window] modalForWindow:[sender window] modalDelegate:self didEndSelector:NULL contextInfo:nil];
+	[[sender window] beginSheet:self.window completionHandler:nil];
 }
 
 - (IBAction)hideFindSheet:(id)sender

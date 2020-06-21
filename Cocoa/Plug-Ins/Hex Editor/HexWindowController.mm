@@ -152,7 +152,7 @@ OSStatus Plug_InitInstance(Plug_PlugInRef plug, Plug_ResourceRef resource)
 		[alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"CancelButton", nil, bundle, nil)];
 		NSButton *button = [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"DiscardChangesButton", nil, bundle, nil)];
 		[button setKeyEquivalent:@"d"];
-		[button setKeyEquivalentModifierMask:NSCommandKeyMask];
+		[button setKeyEquivalentModifierMask:NSEventModifierFlagCommand];
 		[alert beginSheetModalForWindow:sender modalDelegate:self didEndSelector:@selector(saveSheetDidClose:returnCode:contextInfo:) contextInfo:NULL];
 		//[alert release];
 		return NO;

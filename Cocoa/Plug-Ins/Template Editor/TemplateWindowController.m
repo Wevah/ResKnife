@@ -156,10 +156,10 @@
 		NSAlert *alert = [[NSAlert alloc] init];
 		alert.messageText = NSLocalizedStringFromTableInBundle(@"KeepChangesDialogTitle", nil, bundle, nil);
 
-		[alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"KeepChangesButton", nil, bundle, nil)].keyEquivalent = @"\n";
+		[alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"KeepChangesButton", nil, bundle, nil)].keyEquivalent = @"\r";
 
 		NSButton *dontSaveButton = [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"DiscardChangesButton", nil, bundle, nil)];
-		dontSaveButton.keyEquivalent = @"D";
+		dontSaveButton.keyEquivalent = @"d";
 		dontSaveButton.keyEquivalentModifierMask = NSEventModifierFlagCommand;
 
 		[alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"CancelButton", nil, bundle, nil)].keyEquivalent = @"\e";
