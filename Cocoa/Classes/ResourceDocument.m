@@ -1293,13 +1293,13 @@ static NSString *RKViewItemIdentifier		= @"com.nickshanks.resknife.toolbar.view"
 				Resource *resource = [remainingResources objectAtIndex:0];
 				if(returnCode == NSAlertFirstButtonReturn)	// unique ID
 				{
-					Resource *newResource = [Resource resourceOfType:[resource type] andID:[dataSource uniqueIDForType:[resource type]] withName:[resource name] andAttributes:[resource attributes] data:[resource data]];
-					[dataSource addResource:newResource];
+					Resource *newResource = [Resource resourceOfType:[resource type] andID:[self.dataSource uniqueIDForType:[resource type]] withName:[resource name] andAttributes:[resource attributes] data:[resource data]];
+					[self.dataSource addResource:newResource];
 				}
 				else if(NSAlertThirdButtonReturn)				// overwrite
 				{
-					[dataSource removeResource:[dataSource resourceOfType:[resource type] andID:[resource resID]]];
-					[dataSource addResource:resource];
+					[self.dataSource removeResource:[self.dataSource resourceOfType:[resource type] andID:[resource resID]]];
+					[self.dataSource addResource:resource];
 				}
 				//	else if(NSAlertAlternateReturn)			// skip
 
