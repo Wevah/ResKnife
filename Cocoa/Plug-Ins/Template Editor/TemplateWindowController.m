@@ -152,28 +152,37 @@
 	if([[self window] isDocumentEdited])
 	{
 		NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-		NSBeginAlertSheet(NSLocalizedStringFromTableInBundle(@"KeepChangesDialogTitle", nil, bundle, nil), NSLocalizedStringFromTableInBundle(@"KeepChangesButton", nil, bundle, nil), NSLocalizedStringFromTableInBundle(@"DiscardChangesButton", nil, bundle, nil), NSLocalizedStringFromTableInBundle(@"CancelButton", nil, bundle, nil), sender, self, @selector(saveSheetDidClose:returnCode:contextInfo:), nil, nil, NSLocalizedStringFromTableInBundle(@"KeepChangesDialogMessage", nil, bundle, nil));
+
+		NSAlert *alert = [[NSAlert alloc] init];
+		alert.messageText = NSLocalizedStringFromTableInBundle(@"KeepChangesDialogTitle", nil, bundle, nil);
+
+		[alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"KeepChangesButton", nil, bundle, nil)].keyEquivalent = @"\n";
+
+		NSButton *dontSaveButton = [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"DiscardChangesButton", nil, bundle, nil)];
+		dontSaveButton.keyEquivalent = @"D";
+		dontSaveButton.keyEquivalentModifierMask = NSEventModifierFlagCommand;
+
+		[alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"CancelButton", nil, bundle, nil)].keyEquivalent = @"\e";
+
+		[alert beginSheetModalForWindow:sender completionHandler:^(NSModalResponse returnCode) {
+			switch(returnCode) {
+				case NSAlertFirstButtonReturn:	// keep
+					[self saveResource:nil];
+					[[self window] close];
+					break;
+
+				case NSAlertSecondButtonReturn:	// don't keep
+					[[self window] close];
+					break;
+
+				case NSAlertThirdButtonReturn:	// cancel
+					break;
+			}
+		}];
+
 		return NO;
 	}
 	else return YES;
-}
-
-- (void)saveSheetDidClose:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo
-{
-	switch(returnCode)
-	{
-		case NSAlertDefaultReturn:		// keep
-			[self saveResource:nil];
-			[[self window] close];
-			break;
-		
-		case NSAlertAlternateReturn:	// don't keep
-			[[self window] close];
-			break;
-		
-		case NSAlertOtherReturn:		// cancel
-			break;
-	}
 }
 
 - (void)saveResource:(id)sender
