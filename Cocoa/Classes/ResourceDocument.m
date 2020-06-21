@@ -252,16 +252,17 @@ extern NSString *RKResourcePboardType;
 	ByteCount forkLength = (ByteCount) [[[[(ApplicationDelegate *)[NSApp delegate] forksForFile:fileRef] firstObjectReturningValue:forkName forKey:@"forkname"] objectForKey:@"forksize"] unsignedLongValue];
 	void *buffer = malloc(forkLength);
 	if(!buffer) return NO;
-	
-	// read fork contents into buffer, bug: assumes no errors
-	FSIORefNum forkRefNum;
+
+	if (forkLength != 0) {
+		// read fork contents into buffer, bug: assumes no errors
+		FSIORefNum forkRefNum;
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-	FSOpenFork(fileRef, uniForkName.length, uniForkName.unicode, fsRdPerm, &forkRefNum);
-	FSReadFork(forkRefNum, fsFromStart, 0, forkLength, buffer, &forkLength);
-	FSCloseFork(forkRefNum);
+		FSOpenFork(fileRef, uniForkName.length, uniForkName.unicode, fsRdPerm, &forkRefNum);
+		FSReadFork(forkRefNum, fsFromStart, 0, forkLength, buffer, &forkLength);
+		FSCloseFork(forkRefNum);
 #pragma clang diagnostic pop
-
+	}
 	// create data
 	NSData *data = [NSData dataWithBytesNoCopy:buffer length:forkLength freeWhenDone:YES];
 	if(!data) return NO;
@@ -269,7 +270,7 @@ extern NSString *RKResourcePboardType;
 	// create resource
 	Resource *resource = [Resource resourceOfType:@"" andID:0 withName:forkName andAttributes:0 data:data];
 	if(!resource) return NO;
-	
+
 	// customise fork name for default data & resource forks - bug: this should really be in resource data source!!
 	HFSUniStr255 resourceForkName;
 #pragma clang diagnostic push
