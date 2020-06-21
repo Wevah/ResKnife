@@ -25,6 +25,7 @@
 		B229EEF715A4FB6F0032C12C /* InfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B229EEEE15A4FB6F0032C12C /* InfoWindow.xib */; };
 		B229EEF815A4FB6F0032C12C /* PrefsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B229EEF015A4FB6F0032C12C /* PrefsWindow.xib */; };
 		B229EEF915A4FB6F0032C12C /* ResourceDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = B229EEF215A4FB6F0032C12C /* ResourceDocument.xib */; };
+		B23C4E8D249EDF0E0031D17A /* VersWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23C4E8B249EDDEF0031D17A /* VersWindowController.swift */; };
 		B23F8C8E1D3D142900893E9B /* CICNWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23F8C8C1D3D142900893E9B /* CICNWindowController.m */; };
 		B23F8C8F1D3D142900893E9B /* CICNWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B23F8C8D1D3D142900893E9B /* CICNWindowController.xib */; };
 		B24925E215A6776600C22060 /* PictWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B24925E015A6776600C22060 /* PictWindow.xib */; };
@@ -446,6 +447,10 @@
 		B234338416AB59D0007134B9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B234338616AB59D0007134B9 /* System7SoundPlayer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "System7SoundPlayer-Prefix.pch"; sourceTree = "<group>"; };
 		B234338716AB59D0007134B9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B23C4E84249EDDAA0031D17A /* vers Editor.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "vers Editor.plugin"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B23C4E86249EDDAA0031D17A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B23C4E8A249EDDEF0031D17A /* ResKnife-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ResKnife-Bridging-Header.h"; sourceTree = "<group>"; };
+		B23C4E8B249EDDEF0031D17A /* VersWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersWindowController.swift; sourceTree = "<group>"; };
 		B23F8C851D3D13C000893E9B /* cicn Editor.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "cicn Editor.plugin"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B23F8C871D3D13C000893E9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B23F8C8B1D3D142900893E9B /* CICNWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CICNWindowController.h; sourceTree = "<group>"; };
@@ -668,6 +673,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B23C4E81249EDDAA0031D17A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B23F8C821D3D13C000893E9B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -879,6 +891,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		B23C4E85249EDDAA0031D17A /* vers Editor */ = {
+			isa = PBXGroup;
+			children = (
+				B23C4E86249EDDAA0031D17A /* Info.plist */,
+				B23C4E8B249EDDEF0031D17A /* VersWindowController.swift */,
+			);
+			path = "vers Editor";
+			sourceTree = "<group>";
+		};
 		B23F8C861D3D13C000893E9B /* cicn Editor */ = {
 			isa = PBXGroup;
 			children = (
@@ -1038,6 +1059,7 @@
 		F57CEE0B0189C95101A8010B /* Plug-Ins */ = {
 			isa = PBXGroup;
 			children = (
+				B23C4E85249EDDAA0031D17A /* vers Editor */,
 				B23F8C861D3D13C000893E9B /* cicn Editor */,
 				B2B2C3FC15A9451800D6F61C /* Pattern Editor */,
 				F5C9ECCE027F474A01A8010C /* Notifications.m */,
@@ -1094,6 +1116,7 @@
 				B2FCA78A15A66ACE00696598 /* PICT Editor.plugin */,
 				B2B2C40715A9464400D6F61C /* Pattern Editor.plugin */,
 				B23F8C851D3D13C000893E9B /* cicn Editor.plugin */,
+				B23C4E84249EDDAA0031D17A /* vers Editor.plugin */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1104,6 +1127,7 @@
 				3D0ABFBC04E172F700C85300 /* README.txt */,
 				3D0933F404DFD7CF00DD74B1 /* TODO.txt */,
 				3D35755A04DAEB4300B8225B /* main.m */,
+				B23C4E8A249EDDEF0031D17A /* ResKnife-Bridging-Header.h */,
 				F5B5881C0156D40B01000001 /* Classes */,
 				F5594EE9021F3E2301A80001 /* Categories */,
 				F5B588350156D40B01000001 /* Resources */,
@@ -1432,6 +1456,23 @@
 			productReference = B229EECA15A4B8720032C12C /* PNG Editor.plugin */;
 			productType = "com.apple.product-type.bundle";
 		};
+		B23C4E83249EDDAA0031D17A /* vers Editor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B23C4E87249EDDAA0031D17A /* Build configuration list for PBXNativeTarget "vers Editor" */;
+			buildPhases = (
+				B23C4E80249EDDAA0031D17A /* Sources */,
+				B23C4E81249EDDAA0031D17A /* Frameworks */,
+				B23C4E82249EDDAA0031D17A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "vers Editor";
+			productName = "vers Editor";
+			productReference = B23C4E84249EDDAA0031D17A /* vers Editor.plugin */;
+			productType = "com.apple.product-type.bundle";
+		};
 		B23F8C841D3D13C000893E9B /* cicn Editor */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B23F8C881D3D13C000893E9B /* Build configuration list for PBXNativeTarget "cicn Editor" */;
@@ -1662,8 +1703,15 @@
 			attributes = {
 				LastUpgradeCheck = 1150;
 				TargetAttributes = {
+					B23C4E83249EDDAA0031D17A = {
+						CreatedOnToolsVersion = 11.5;
+						ProvisioningStyle = Automatic;
+					};
 					B23F8C841D3D13C000893E9B = {
 						CreatedOnToolsVersion = 7.3.1;
+					};
+					E18BF537069FEA1300F076B8 = {
+						LastSwiftMigration = 1150;
 					};
 					E18BF69E069FEA1800F076B8 = {
 						ProvisioningStyle = Manual;
@@ -1696,6 +1744,7 @@
 				B2FCA78915A66ACE00696598 /* PICT Editor */,
 				B2B2C40615A9464400D6F61C /* Pattern Editor */,
 				B23F8C841D3D13C000893E9B /* cicn Editor */,
+				B23C4E83249EDDAA0031D17A /* vers Editor */,
 			);
 		};
 /* End PBXProject section */
@@ -1706,6 +1755,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B229EED515A4B8720032C12C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B23C4E82249EDDAA0031D17A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1901,6 +1957,14 @@
 				B229EEDB15A4B9420032C12C /* PNGWindowController.m in Sources */,
 				B229EEDC15A4B9420032C12C /* PNGWindowController.xib in Sources */,
 				B229EEDE15A4BABD0032C12C /* Notifications.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B23C4E80249EDDAA0031D17A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B23C4E8D249EDF0E0031D17A /* VersWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2443,6 +2507,93 @@
 			};
 			name = Release;
 		};
+		B23C4E88249EDDAA0031D17A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = M72QZ9W58G;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "vers Editor/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.derailer.vers-Editor";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = plugin;
+			};
+			name = Debug;
+		};
+		B23C4E89249EDDAA0031D17A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = M72QZ9W58G;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "vers Editor/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.derailer.vers-Editor";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = plugin;
+			};
+			name = Release;
+		};
 		B23F8C891D3D13C000893E9B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2767,6 +2918,7 @@
 		E13F7EDA08F0411100E2A5CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -2786,6 +2938,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nickshanks.resknife;
 				PRODUCT_NAME = ResKnife;
+				SWIFT_OBJC_BRIDGING_HEADER = "Cocoa/Plug-Ins/vers Editor/ResKnife-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				WARNING_CFLAGS = (
 					"-Wmost",
 					"-Wno-four-char-constants",
@@ -2798,6 +2953,7 @@
 		E13F7EDB08F0411100E2A5CB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -2815,6 +2971,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nickshanks.resknife;
 				PRODUCT_NAME = ResKnife;
+				SWIFT_OBJC_BRIDGING_HEADER = "Cocoa/Plug-Ins/vers Editor/ResKnife-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				WARNING_CFLAGS = (
 					"-Wmost",
 					"-Wno-four-char-constants",
@@ -3127,6 +3286,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ResKnife-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -3164,6 +3324,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ResKnife-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -3175,6 +3336,15 @@
 			buildConfigurations = (
 				B229EED815A4B8720032C12C /* Debug */,
 				B229EED915A4B8720032C12C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B23C4E87249EDDAA0031D17A /* Build configuration list for PBXNativeTarget "vers Editor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B23C4E88249EDDAA0031D17A /* Debug */,
+				B23C4E89249EDDAA0031D17A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
