@@ -7,6 +7,7 @@
 #import "ElementDBYT.h"
 #import "ElementDWRD.h"
 #import "ElementDLNG.h"
+#import "ResourceDocument.h"
 
 #import "NSOutlineView-SelectedItems.h"
 
