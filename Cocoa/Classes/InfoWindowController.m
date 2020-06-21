@@ -7,7 +7,42 @@
 //#import "MoreFilesX.h"
 #import <AssertMacros.h> // for require_noerr, etc
 
-@implementation InfoWindowController
+enum Attributes
+{
+	changedBox = 0,
+	preloadBox,
+	protectedBox,
+	lockedBox,
+	purgableBox,
+	systemHeapBox
+};
+
+@implementation InfoWindowController {
+	IBOutlet NSImageView	*iconView;
+	IBOutlet NSTextField	*nameView;
+
+	IBOutlet NSBox			*placeholderView;
+	IBOutlet NSBox			*resourceView;
+	IBOutlet NSBox			*documentView;
+
+	IBOutlet NSMatrix 		*attributesMatrix;
+
+	IBOutlet NSButton		*changedCheckbox;
+	IBOutlet NSButton		*preloadCheckbox;
+	IBOutlet NSButton		*protectedCheckbox;
+	IBOutlet NSButton		*lockedCheckbox;
+	IBOutlet NSButton		*purgableCheckbox;
+	IBOutlet NSButton		*systemHeapCheckbox;
+
+	IBOutlet NSTextField	*creatorField;
+	IBOutlet NSTextField	*typeField;
+	IBOutlet NSTextField	*dataForkSizeField;
+	IBOutlet NSTextField	*resourceForkSizeField;
+
+@private
+	ResourceDocument		*currentDocument;
+	Resource				*selectedResource;
+}
 
 static OSErr
 FSGetForkSizes(
@@ -90,7 +125,10 @@ FSGetCatalogInfo:
 @updated	2003-11-06 NGS:	Fixed creator/type handling.
 @updated	2003-10-26 NGS:	Now asks app delegate for icon instead of NSWorkspace.
 @updated	2003-10-26 NGS:	Improved document name & icon display.
+@updated	2020-06-20 NBW: Replaced deprecated NSForm/NSMatrix. Added CONTROL_STATE() macro.
 */
+
+#define CONTROL_STATE(x) ((x) != 0 ? NSControlStateValueOn : NSControlStateValueOff)
 
 - (void)updateInfoWindow
 {
@@ -103,13 +141,16 @@ FSGetCatalogInfo:
 		[[self window] setTitle:NSLocalizedString(@"Resource Info",nil)];
 		[nameView setStringValue:[selectedResource name]];
 		[iconView setImage:[(ApplicationDelegate *)[NSApp delegate] iconForResourceType:[selectedResource type]]];
-		[[attributesMatrix cellAtRow:changedBox column:0]	setState:[[selectedResource attributes] shortValue] & resChanged];
-		[[attributesMatrix cellAtRow:preloadBox column:0]	setState:[[selectedResource attributes] shortValue] & resPreload];
-		[[attributesMatrix cellAtRow:protectedBox column:0]	setState:[[selectedResource attributes] shortValue] & resProtected];
-		[[attributesMatrix cellAtRow:lockedBox column:0]	setState:[[selectedResource attributes] shortValue] & resLocked];
-		[[attributesMatrix cellAtRow:purgableBox column:0]	setState:[[selectedResource attributes] shortValue] & resPurgeable];
-		[[attributesMatrix cellAtRow:systemHeapBox column:0] setState:[[selectedResource attributes] shortValue] & resSysHeap];
-		
+
+		short attrs = [selectedResource attributes].shortValue;
+
+		changedCheckbox.state		= CONTROL_STATE(attrs & resChanged);
+		preloadCheckbox.state		= CONTROL_STATE(attrs & resPreload);
+		protectedCheckbox.state		= CONTROL_STATE(attrs & resProtected);
+		lockedCheckbox.state		= CONTROL_STATE(attrs & resLocked);
+		purgableCheckbox.state		= CONTROL_STATE(attrs & resPurgeable);
+		systemHeapCheckbox.state	= CONTROL_STATE(attrs & resSysHeap);
+
 		// swap box
 		[placeholderView setContentView:resourceView];
 	}
@@ -149,13 +190,11 @@ FSGetCatalogInfo:
 		creator = CFSwapInt32BigToHost(creator);
 		type = CFSwapInt32BigToHost(type);
 
-		[[filePropertyForm cellAtIndex:0] setStringValue:[[NSString alloc] initWithBytes:&creator length:sizeof(creator) encoding:NSMacOSRomanStringEncoding]];
-		[[filePropertyForm cellAtIndex:1] setStringValue:[[NSString alloc] initWithBytes:&type length:sizeof(type) encoding:NSMacOSRomanStringEncoding]];
-//		[[filePropertyForm cellAtIndex:2] setObjectValue:[NSNumber numberWithUnsignedLongLong:dataLogicalSize]];
-//		[[filePropertyForm cellAtIndex:3] setObjectValue:[NSNumber numberWithUnsignedLongLong:rsrcLogicalSize]];
-		[[filePropertyForm cellAtIndex:2] setStringValue:[[NSNumber numberWithUnsignedLongLong:dataLogicalSize] description]];
-		[[filePropertyForm cellAtIndex:3] setStringValue:[[NSNumber numberWithUnsignedLongLong:rsrcLogicalSize] description]];
-		
+		creatorField.stringValue = [[NSString alloc] initWithBytes:&creator length:sizeof(creator) encoding:NSMacOSRomanStringEncoding];
+		typeField.stringValue = [[NSString alloc] initWithBytes:&type length:sizeof(type) encoding:NSMacOSRomanStringEncoding];
+		dataForkSizeField.objectValue = [NSNumber numberWithUnsignedLongLong:dataLogicalSize];
+		resourceForkSizeField.objectValue = [NSNumber numberWithUnsignedLongLong:rsrcLogicalSize];
+
 		// swap box
 		[placeholderView setContentView:documentView];
 	}
