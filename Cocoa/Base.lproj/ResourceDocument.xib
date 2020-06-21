@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13189.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -120,11 +120,11 @@
                                 </outlineView>
                             </subviews>
                         </clipView>
-                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="163">
+                        <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="163">
                             <rect key="frame" x="1" y="385" width="540" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="165">
+                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="165">
                             <rect key="frame" x="525" y="23" width="16" height="378"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -143,7 +143,7 @@
         <customObject id="24" userLabel="OutlineViewDelegate" customClass="OutlineViewDelegate">
             <connections>
                 <outlet property="attributesFormatter" destination="48" id="49"/>
-                <outlet property="sizeFormatter" destination="38" id="39"/>
+                <outlet property="sizeFormatter" destination="3JL-g9-gNo" id="S8p-ed-ZBp"/>
                 <outlet property="window" destination="5" id="31"/>
             </connections>
         </customObject>
@@ -154,7 +154,6 @@
                 <outlet property="window" destination="5" id="46"/>
             </connections>
         </customObject>
-        <customObject id="38" userLabel="SizeFormatter" customClass="SizeFormatter"/>
         <customObject id="48" userLabel="AttributesFormatter" customClass="AttributesFormatter"/>
         <segmentedControl verticalHuggingPriority="750" id="166">
             <rect key="frame" x="0.0" y="0.0" width="69" height="25"/>
@@ -183,11 +182,12 @@
                 <font key="font" metaFont="system"/>
             </buttonCell>
         </button>
+        <byteCountFormatter countStyle="memory" id="3JL-g9-gNo"/>
     </objects>
     <resources>
         <image name="EditHexTemplate" width="16" height="16"/>
         <image name="NSAddTemplate" width="11" height="11"/>
-        <image name="NSIconViewTemplate" width="10" height="10"/>
+        <image name="NSIconViewTemplate" width="14" height="10"/>
         <image name="NSListViewTemplate" width="14" height="10"/>
     </resources>
 </document>
