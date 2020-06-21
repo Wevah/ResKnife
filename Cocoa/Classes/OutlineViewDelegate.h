@@ -8,7 +8,7 @@
 {
 	IBOutlet NSWindow				*window;
 	IBOutlet NSOutlineView			*outlineView;
-	IBOutlet SizeFormatter			*sizeFormatter;
+	IBOutlet NSByteCountFormatter	*sizeFormatter;
 	IBOutlet AttributesFormatter 	*attributesFormatter;
 }
 
