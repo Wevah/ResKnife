@@ -118,7 +118,7 @@
 		}
 
 		// draw image
-		[image drawInRect:imageFrame fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+		[image drawInRect:imageFrame fromRect:NSZeroRect operation:NSCompositingOperationSourceOver fraction:1.0];
 
 		if ([controlView isFlipped])
 			[t concat];

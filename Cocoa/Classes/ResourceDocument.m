@@ -685,14 +685,14 @@ extern NSString *RKResourcePboardType;
 	[panel setNameFieldStringValue:filename];
 	//[panel beginSheetForDirectory:nil file:filename modalForWindow:mainWindow modalDelegate:self didEndSelector:@selector(exportPanelDidEnd:returnCode:contextInfo:) contextInfo:[exportData retain]];
 	[panel beginSheetModalForWindow:mainWindow completionHandler:^(NSModalResponse result) {
-		if (result == NSOKButton)
+		if (result == NSModalResponseOK)
 			[exportData writeToURL:[panel URL] atomically:YES];
 	}];
 }
 
 - (void)folderChoosePanelDidEnd:(NSSavePanel *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
 {
-	if(returnCode == NSOKButton)
+	if(returnCode == NSModalResponseOK)
 	{
 		unsigned int i = 1;
 		Resource *resource;
@@ -1005,7 +1005,7 @@ static NSString *RKViewItemIdentifier		= @"com.nickshanks.resknife.toolbar.view"
 	
 	
 	NSEvent *event = [NSApp currentEvent];
-	if ([event type] == NSLeftMouseUp && (([event modifierFlags] & NSDeviceIndependentModifierFlagsMask) & NSAlternateKeyMask) != 0)
+	if ([event type] == NSEventTypeLeftMouseUp && (([event modifierFlags] & NSEventModifierFlagDeviceIndependentFlagsMask) & NSEventModifierFlagOption) != 0)
 		[self openResourcesAsHex:sender];
 	else {
 		NSArray *selected = [outlineView selectedItems];
@@ -1324,7 +1324,7 @@ static NSString *RKViewItemIdentifier		= @"com.nickshanks.resknife.toolbar.view"
 - (void)deleteResourcesSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo
 {
 	#pragma unused(contextInfo)
-	if(returnCode == NSOKButton)
+	if(returnCode == NSModalResponseOK)
 		[self deleteSelectedResources];
 }
 

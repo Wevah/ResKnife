@@ -18,7 +18,7 @@
 	
 	// run panel
 	NSInteger button = [super runModalOpenPanel:openPanel forTypes:extensions];
-	if(button == NSOKButton)
+	if(button == NSModalResponseOK)
 		[openPanelDelegate setReadOpenPanelForFork:YES];
 	return button;
 }
