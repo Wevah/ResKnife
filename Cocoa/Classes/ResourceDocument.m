@@ -1316,16 +1316,21 @@ static NSString *RKViewItemIdentifier		= @"com.nickshanks.resknife.toolbar.view"
 	#pragma unused(sender)
 	if([prefs boolForKey:@"DeleteResourceWarning"])
 	{
-		NSBeginCriticalAlertSheet(@"Delete Resource", @"Delete", @"Cancel", nil, [self mainWindow], self, @selector(deleteResourcesSheetDidEnd:returnCode:contextInfo:), NULL, nil, @"Please confirm you wish to delete the selected resources.");
+		NSAlert *alert = [[NSAlert alloc] init];
+		alert.messageText = @"Delete Resource";
+		alert.informativeText = @"Please confirm you wish to delete the selected resources.";
+
+		[alert addButtonWithTitle:@"Delete"];
+		[alert addButtonWithTitle:@"Cancel"];
+
+		alert.alertStyle = NSAlertStyleCritical;
+
+		[alert beginSheetModalForWindow:self.mainWindow completionHandler:^(NSModalResponse returnCode) {
+			if (returnCode == NSAlertFirstButtonReturn)
+				[self deleteSelectedResources];
+		}];
 	}
 	else [self deleteSelectedResources];
-}
-
-- (void)deleteResourcesSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo
-{
-	#pragma unused(contextInfo)
-	if(returnCode == NSModalResponseOK)
-		[self deleteSelectedResources];
 }
 
 - (void)deleteSelectedResources
