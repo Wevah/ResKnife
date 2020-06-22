@@ -26,8 +26,11 @@
 		B229EEF815A4FB6F0032C12C /* PrefsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B229EEF015A4FB6F0032C12C /* PrefsWindow.xib */; };
 		B229EEF915A4FB6F0032C12C /* ResourceDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = B229EEF215A4FB6F0032C12C /* ResourceDocument.xib */; };
 		B23C4E8D249EDF0E0031D17A /* VersWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23C4E8B249EDDEF0031D17A /* VersWindowController.swift */; };
+		B23C4E8F249F01D10031D17A /* VersWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B23C4E8E249F01D10031D17A /* VersWindowController.xib */; };
+		B23C4E90249F021B0031D17A /* vers Editor.plugin in Copy Plugins */ = {isa = PBXBuildFile; fileRef = B23C4E84249EDDAA0031D17A /* vers Editor.plugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B23F8C8E1D3D142900893E9B /* CICNWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23F8C8C1D3D142900893E9B /* CICNWindowController.m */; };
 		B23F8C8F1D3D142900893E9B /* CICNWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B23F8C8D1D3D142900893E9B /* CICNWindowController.xib */; };
+		B2404FA724A0951000644BEC /* BinaryCodedDecimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2404FA624A0951000644BEC /* BinaryCodedDecimal.swift */; };
 		B24925E215A6776600C22060 /* PictWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B24925E015A6776600C22060 /* PictWindow.xib */; };
 		B24925E615A6778C00C22060 /* ICONWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B24925E415A6778C00C22060 /* ICONWindow.xib */; };
 		B24FA09915D303A800622683 /* HexFiend.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B25C779815D2B0C500C005DE /* HexFiend.framework */; };
@@ -383,6 +386,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				B23C4E90249F021B0031D17A /* vers Editor.plugin in Copy Plugins */,
 				B2B2C41515A9468300D6F61C /* Pattern Editor.plugin in Copy Plugins */,
 				B2FCA79C15A66B5500696598 /* PICT Editor.plugin in Copy Plugins */,
 				B229EEDD15A4BA900032C12C /* PNG Editor.plugin in Copy Plugins */,
@@ -451,11 +455,13 @@
 		B23C4E86249EDDAA0031D17A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B23C4E8A249EDDEF0031D17A /* ResKnife-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ResKnife-Bridging-Header.h"; sourceTree = "<group>"; };
 		B23C4E8B249EDDEF0031D17A /* VersWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersWindowController.swift; sourceTree = "<group>"; };
+		B23C4E8E249F01D10031D17A /* VersWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VersWindowController.xib; sourceTree = "<group>"; };
 		B23F8C851D3D13C000893E9B /* cicn Editor.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "cicn Editor.plugin"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B23F8C871D3D13C000893E9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B23F8C8B1D3D142900893E9B /* CICNWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CICNWindowController.h; sourceTree = "<group>"; };
 		B23F8C8C1D3D142900893E9B /* CICNWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CICNWindowController.m; sourceTree = "<group>"; };
 		B23F8C8D1D3D142900893E9B /* CICNWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CICNWindowController.xib; sourceTree = "<group>"; };
+		B2404FA624A0951000644BEC /* BinaryCodedDecimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryCodedDecimal.swift; sourceTree = "<group>"; };
 		B25C779815D2B0C500C005DE /* HexFiend.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HexFiend.framework; sourceTree = "<group>"; };
 		B271D07F15B6CFC70039A282 /* EditHexTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = EditHexTemplate.pdf; path = ../../../../Documents/ResKnife/EditHexTemplate.pdf; sourceTree = "<group>"; };
 		B2720AD422BD561500EAA0FF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -896,6 +902,8 @@
 			children = (
 				B23C4E86249EDDAA0031D17A /* Info.plist */,
 				B23C4E8B249EDDEF0031D17A /* VersWindowController.swift */,
+				B23C4E8E249F01D10031D17A /* VersWindowController.xib */,
+				B2404FA624A0951000644BEC /* BinaryCodedDecimal.swift */,
 			);
 			path = "vers Editor";
 			sourceTree = "<group>";
@@ -1798,6 +1806,7 @@
 			files = (
 				E18BF55A069FEA1300F076B8 /* InfoPlist.strings in Resources */,
 				E18BF55B069FEA1300F076B8 /* Localizable.strings in Resources */,
+				B23C4E8F249F01D10031D17A /* VersWindowController.xib in Resources */,
 				E18BF55C069FEA1300F076B8 /* defaults.plist in Resources */,
 				E18BF55D069FEA1300F076B8 /* ResKnife.icns in Resources */,
 				E18BF55E069FEA1300F076B8 /* Resource file.icns in Resources */,
@@ -1964,6 +1973,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2404FA724A0951000644BEC /* BinaryCodedDecimal.swift in Sources */,
 				B23C4E8D249EDF0E0031D17A /* VersWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2541,7 +2551,7 @@
 				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = "vers Editor/Info.plist";
+				INFOPLIST_FILE = "Cocoa/Plug-Ins/vers Editor/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -2582,7 +2592,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = "vers Editor/Info.plist";
+				INFOPLIST_FILE = "Cocoa/Plug-Ins/vers Editor/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -3286,7 +3296,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ResKnife-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Cocoa/ResKnife-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -3324,7 +3335,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ResKnife-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Cocoa/ResKnife-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

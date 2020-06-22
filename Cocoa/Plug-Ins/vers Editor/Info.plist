@@ -20,5 +20,9 @@
 	<string>1</string>
 	<key>NSPrincipalClass</key>
 	<string></string>
+	<key>RKEditedTypes</key>
+	<array>
+		<string>vers</string>
+	</array>
 </dict>
 </plist>
