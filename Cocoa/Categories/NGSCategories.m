@@ -39,6 +39,14 @@
 			[array addObject:object];
 	return [NSArray arrayWithArray:array];
 }
+- (NSArray *)arrayByApplyingBlockToObjects:(id (^)(id obj))block {
+	NSMutableArray *array = [NSMutableArray array];
+	for (id object in self) {
+		[array addObject:block(object)];
+	}
+	return [array copy];
+}
+#if 0
 - (NSArray *)arrayByMakingObjectsPerformSelector:(SEL)selector withObject:(id)inObject
 {
 	id object;
@@ -48,6 +56,7 @@
 		[array addObject:[object performSelector:selector withObject:inObject]];
 	return [NSArray arrayWithArray:array];
 }
+#endif
 @end
 
 #pragma mark -

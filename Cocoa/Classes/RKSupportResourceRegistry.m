@@ -8,7 +8,10 @@
 	[RKSupportResourceRegistry scanForSupportResourcesInFolder:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Support Resources"]];
 #if MAC_OS_X_VERSION_10_4 <= MAC_OS_X_VERSION_MAX_ALLOWED
 	NSArray *dirsArray = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSAllDomainsMask, YES);
-	dirsArray = [dirsArray arrayByMakingObjectsPerformSelector:@selector(stringByAppendingPathComponent:) withObject:@"ResKnife/Support Resources"];
+	dirsArray = [dirsArray arrayByApplyingBlockToObjects:^id (id obj) {
+		return [obj stringByAppendingPathComponent:@"ResKnife/Support Resources"];
+	}];
+	//dirsArray = [dirsArray arrayByMakingObjectsPerformSelector:@selector(stringByAppendingPathComponent:) withObject:@"ResKnife/Support Resources"];
 	// FIXME: log content of dirsArray and merge with the following:
 	for (NSString *dir in dirsArray)
 		[RKSupportResourceRegistry scanForSupportResourcesInFolder:dir];
