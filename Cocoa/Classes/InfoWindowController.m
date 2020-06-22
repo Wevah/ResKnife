@@ -120,15 +120,17 @@ FSGetCatalogInfo:
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(documentInfoDidChange:) name:DocumentInfoDidChangeNotification object:nil];
 }
 
+#define CONTROL_STATE(x) ((x) != 0 ? NSControlStateValueOn : NSControlStateValueOff)
+
 /*!
 @method		updateInfoWindow
+Updates the info window with properties from the current document or resource.
+
 @updated	2003-11-06 NGS:	Fixed creator/type handling.
 @updated	2003-10-26 NGS:	Now asks app delegate for icon instead of NSWorkspace.
 @updated	2003-10-26 NGS:	Improved document name & icon display.
 @updated	2020-06-20 NBW: Replaced deprecated NSForm/NSMatrix. Added CONTROL_STATE() macro.
 */
-
-#define CONTROL_STATE(x) ((x) != 0 ? NSControlStateValueOn : NSControlStateValueOff)
 
 - (void)updateInfoWindow
 {
